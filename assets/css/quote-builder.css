@@ -57,6 +57,10 @@
   line-height: .94;
 }
 
+.quote-builder__intro h2 span {
+  display: block;
+}
+
 .quote-builder__intro p {
   max-width: 36rem;
   margin: 0;
@@ -82,11 +86,14 @@
 .quote-step-row__icon,
 .quote-trust__icon {
   display: grid;
+  flex: 0 0 auto;
   place-items: center;
   border: 1px solid color-mix(in srgb, var(--quote-accent) 28%, transparent);
   border-radius: 999px;
   background: color-mix(in srgb, var(--quote-accent) 9%, #fff);
   color: var(--quote-accent);
+  line-height: 1;
+  margin-block-start: 0;
 }
 
 .quote-builder__benefit-icon {
@@ -108,7 +115,12 @@
   line-height: 1.25;
 }
 
-.quote-builder__benefit span {
+.quote-builder__benefit-copy {
+  display: block;
+  min-width: 0;
+}
+
+.quote-builder__benefit-copy span {
   display: block;
   margin-block-start: .16rem;
   color: var(--color-muted, #68645e);
@@ -611,7 +623,12 @@
   line-height: 1.2;
 }
 
-.quote-trust span {
+.quote-trust__item > span:not(.quote-trust__icon) {
+  display: block;
+  min-width: 0;
+}
+
+.quote-trust__item > span:not(.quote-trust__icon) > span {
   display: block;
   margin-block-start: .16rem;
   color: var(--color-muted, #68645e);

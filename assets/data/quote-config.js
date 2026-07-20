@@ -147,6 +147,7 @@
       serviceKey: "business-print",
       accentClass: "quote-builder--print",
       headline: "Build a print quote with the right specifications.",
+      headlineLines: ["Build a", "print quote", "with the", "right print", "details."],
       description: "Tell us the product, size, quantity, artwork status and finishing needs so the quote is accurate from the start.",
       cta: "Request Print Pricing",
       benefits: benefits,

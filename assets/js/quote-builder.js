@@ -353,16 +353,25 @@
 
   QuoteBuilder.prototype.renderIntro = function () {
     var benefitsHtml = (this.config.benefits || benefits).map(function (item) {
-      return '<div class="quote-builder__benefit"><span class="quote-builder__benefit-icon">' + icon(item.icon) + '</span><span><strong>' + escapeHtml(item.title) + '</strong><span>' + escapeHtml(item.text) + '</span></span></div>';
+      return '<div class="quote-builder__benefit"><span class="quote-builder__benefit-icon">' + icon(item.icon) + '</span><span class="quote-builder__benefit-copy"><strong>' + escapeHtml(item.title) + '</strong><span>' + escapeHtml(item.text) + '</span></span></div>';
     }).join("");
     return '<div class="quote-builder__intro">' +
       '<p class="quote-builder__eyebrow">Ready for a useful estimate?</p>' +
-      '<h2>' + escapeHtml(this.config.headline) + '</h2>' +
+      '<h2>' + this.renderHeadline() + '</h2>' +
       '<p>' + escapeHtml(this.config.description) + '</p>' +
       '<div class="quote-builder__benefits">' + benefitsHtml + '</div>' +
       '<button class="quote-builder__cta" type="button" data-quote-action="start">' + escapeHtml(this.config.cta || "Start My Quote") + '<span aria-hidden="true">↗</span></button>' +
       '<span class="quote-builder__reassurance">Takes less than 2 minutes - No obligation</span>' +
     '</div>';
+  };
+
+  QuoteBuilder.prototype.renderHeadline = function () {
+    if (Array.isArray(this.config.headlineLines) && this.config.headlineLines.length) {
+      return this.config.headlineLines.map(function (line) {
+        return '<span>' + escapeHtml(line) + '</span>';
+      }).join("");
+    }
+    return escapeHtml(this.config.headline);
   };
 
   QuoteBuilder.prototype.renderPanel = function () {
