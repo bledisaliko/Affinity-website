@@ -62,7 +62,7 @@ AddType application/javascript .js
 AddType text/css .css
 
 # Protect sensitive configuration and development files.
-<FilesMatch "^(\.env.*|config\.php|config\.example\.php|composer\.(json|lock)|package(-lock)?\.json|pnpm-lock\.yaml|tsconfig\.json|nuxt\.config\.ts)$">
+<FilesMatch "^(\.env.*|config\.php|config\.example\.php|quote-config\.php|quote-config\.example\.php|composer\.(json|lock)|package(-lock)?\.json|pnpm-lock\.yaml|tsconfig\.json|nuxt\.config\.ts)$">
   Require all denied
 </FilesMatch>
 

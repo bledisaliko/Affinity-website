@@ -1,0 +1,5 @@
+api/quote-config.php
+private/
+tmp/
+uploads/
+*.log
