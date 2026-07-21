@@ -72,3 +72,29 @@ AddType text/css .css
 </FilesMatch>
 
 ErrorDocument 404 /404.html
+
+# ==================================================
+# AFFINITY CREATIVE CACHE CONTROL
+# HTML must always check for the latest version
+# ==================================================
+
+<IfModule mod_headers.c>
+
+    # Never keep an old page without checking the server
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+
+    # JSON and deployment metadata may change
+    <FilesMatch "\.(json|xml)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+
+    # Cache styles, scripts, fonts and images for one hour
+    <FilesMatch "\.(css|js|mjs|png|jpg|jpeg|gif|svg|webp|ico|woff|woff2|ttf)$">
+        Header set Cache-Control "public, max-age=3600, must-revalidate"
+    </FilesMatch>
+
+</IfModule>
