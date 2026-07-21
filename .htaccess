@@ -72,29 +72,41 @@ AddType text/css .css
 </FilesMatch>
 
 ErrorDocument 404 /404.html
+# =========================================================
+# TEMPORARY ZERO-CACHE MODE — AFFINITY CREATIVE
+# Use while the website is being actively developed
+# =========================================================
 
-# ==================================================
-# AFFINITY CREATIVE CACHE CONTROL
-# HTML must always check for the latest version
-# ==================================================
+<IfModule LiteSpeed>
+    CacheLookup off
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 0 seconds"
+
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/css "access plus 0 seconds"
+    ExpiresByType application/javascript "access plus 0 seconds"
+    ExpiresByType text/javascript "access plus 0 seconds"
+    ExpiresByType application/json "access plus 0 seconds"
+    ExpiresByType image/jpeg "access plus 0 seconds"
+    ExpiresByType image/png "access plus 0 seconds"
+    ExpiresByType image/webp "access plus 0 seconds"
+    ExpiresByType image/svg+xml "access plus 0 seconds"
+</IfModule>
 
 <IfModule mod_headers.c>
+    <FilesMatch "\.(html?|css|js|mjs|json|xml|png|jpe?g|gif|svg|webp|ico|woff|woff2|ttf)$">
+        Header always unset Cache-Control
+        Header always unset Expires
+        Header always unset ETag
 
-    # Never keep an old page without checking the server
-    <FilesMatch "\.(html|htm)$">
-        Header set Cache-Control "no-cache, must-revalidate"
-        Header set Pragma "no-cache"
-        Header set Expires "0"
+        Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0, proxy-revalidate"
+        Header always set Pragma "no-cache"
+        Header always set Expires "0"
     </FilesMatch>
-
-    # JSON and deployment metadata may change
-    <FilesMatch "\.(json|xml)$">
-        Header set Cache-Control "no-cache, must-revalidate"
-    </FilesMatch>
-
-    # Cache styles, scripts, fonts and images for one hour
-    <FilesMatch "\.(css|js|mjs|png|jpg|jpeg|gif|svg|webp|ico|woff|woff2|ttf)$">
-        Header set Cache-Control "public, max-age=3600, must-revalidate"
-    </FilesMatch>
-
 </IfModule>
+
+FileETag None
+
