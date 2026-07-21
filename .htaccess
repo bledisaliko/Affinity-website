@@ -4,6 +4,14 @@
 Options -Indexes
 DirectoryIndex index.html index.php
 
+FileETag None
+
+<IfModule LiteSpeed>
+  CacheDisable public /
+  CacheDisable private /
+  CacheLookup public off
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
@@ -28,15 +36,25 @@ DirectoryIndex index.html index.php
 
 <IfModule mod_expires.c>
   ExpiresActive On
+  ExpiresDefault "access plus 0 seconds"
+
   ExpiresByType text/html "access plus 0 seconds"
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
-  ExpiresByType image/avif "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 month"
-  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 0 seconds"
+  ExpiresByType application/javascript "access plus 0 seconds"
+  ExpiresByType text/javascript "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 0 seconds"
+  ExpiresByType text/xml "access plus 0 seconds"
+  ExpiresByType image/avif "access plus 0 seconds"
+  ExpiresByType image/webp "access plus 0 seconds"
+  ExpiresByType image/png "access plus 0 seconds"
+  ExpiresByType image/jpeg "access plus 0 seconds"
+  ExpiresByType image/gif "access plus 0 seconds"
+  ExpiresByType image/svg+xml "access plus 0 seconds"
+  ExpiresByType image/x-icon "access plus 0 seconds"
+  ExpiresByType font/woff "access plus 0 seconds"
+  ExpiresByType font/woff2 "access plus 0 seconds"
+  ExpiresByType font/ttf "access plus 0 seconds"
 </IfModule>
 
 <IfModule mod_headers.c>
@@ -46,12 +64,19 @@ DirectoryIndex index.html index.php
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
   Header always set X-XSS-Protection "0"
 
-  <FilesMatch "\.(css|js|webp|avif|png|jpg|jpeg|svg|woff2)$">
-    Header set Cache-Control "public, max-age=2592000"
-  </FilesMatch>
-
-  <FilesMatch "\.html$">
-    Header set Cache-Control "no-cache"
+  <FilesMatch "\.(html?|css|js|mjs|json|xml|txt|png|jpe?g|gif|svg|webp|avif|ico|woff2?|ttf|otf)$">
+    Header unset Cache-Control
+    Header always unset Cache-Control
+    Header unset Expires
+    Header always unset Expires
+    Header unset ETag
+    Header always unset ETag
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0, proxy-revalidate"
+    Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0, proxy-revalidate"
+    Header set Pragma "no-cache"
+    Header always set Pragma "no-cache"
+    Header set Expires "0"
+    Header always set Expires "0"
   </FilesMatch>
 </IfModule>
 
@@ -72,40 +97,4 @@ AddType text/css .css
 </FilesMatch>
 
 ErrorDocument 404 /404.html
-# =========================================================
-# TEMPORARY ZERO-CACHE MODE — AFFINITY CREATIVE
-# Use while the website is being actively developed
-# =========================================================
 
-<IfModule LiteSpeed>
-    CacheLookup off
-</IfModule>
-
-<IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresDefault "access plus 0 seconds"
-
-    ExpiresByType text/html "access plus 0 seconds"
-    ExpiresByType text/css "access plus 0 seconds"
-    ExpiresByType application/javascript "access plus 0 seconds"
-    ExpiresByType text/javascript "access plus 0 seconds"
-    ExpiresByType application/json "access plus 0 seconds"
-    ExpiresByType image/jpeg "access plus 0 seconds"
-    ExpiresByType image/png "access plus 0 seconds"
-    ExpiresByType image/webp "access plus 0 seconds"
-    ExpiresByType image/svg+xml "access plus 0 seconds"
-</IfModule>
-
-<IfModule mod_headers.c>
-    <FilesMatch "\.(html?|css|js|mjs|json|xml|png|jpe?g|gif|svg|webp|ico|woff|woff2|ttf)$">
-        Header always unset Cache-Control
-        Header always unset Expires
-        Header always unset ETag
-
-        Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0, proxy-revalidate"
-        Header always set Pragma "no-cache"
-        Header always set Expires "0"
-    </FilesMatch>
-</IfModule>
-
-FileETag None
