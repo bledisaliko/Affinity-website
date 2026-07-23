@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Custom apparel, print and sign design">
+  <rect width="1200" height="630" fill="#111111"/>
+  <rect x="64" y="64" width="1072" height="502" rx="24" fill="#F7F5F0"/>
+  <circle cx="140" cy="140" r="46" fill="#00BFD8"/>
+  <circle cx="208" cy="140" r="46" fill="#6846FF"/>
+  <circle cx="276" cy="140" r="46" fill="#FF5A1F"/>
+  <circle cx="344" cy="140" r="46" fill="#F4C430"/>
+  <text x="92" y="300" font-family="Arial Black, Arial, sans-serif" font-size="86" font-weight="900" fill="#111111">Custom Apparel,</text>
+  <text x="92" y="398" font-family="Arial Black, Arial, sans-serif" font-size="86" font-weight="900" fill="#111111">Print, Signs</text>
+  <text x="92" y="496" font-family="Arial Black, Arial, sans-serif" font-size="86" font-weight="900" fill="#111111">and Marketing</text>
+</svg>

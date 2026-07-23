@@ -1,0 +1,1 @@
+function s(a,t){const e=a.domain.replace(/\/$/,""),n=t.startsWith("/")?t:`/${t}`;return`${e}${n}`}function r(a,t){return{"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:t.map((e,n)=>({"@type":"ListItem",position:n+1,name:e.name,item:s(a,e.path)}))}}export{s as a,r as b};
