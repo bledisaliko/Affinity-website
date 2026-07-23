@@ -223,6 +223,22 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
+      <picture class="home-hero__mobile-visual">
+        <source
+          media="(max-width: 767px)"
+          srcset="/images/home-hero/affinity-mobile-hero-services.webp"
+        >
+        <img
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+          alt="Custom apparel, embroidered hat and branded Affinity Creative service van"
+          width="1846"
+          height="852"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        >
+      </picture>
+
       <div
         id="home-hero-service-preview"
         class="home-hero__visual"
@@ -456,6 +472,10 @@ onBeforeUnmount(() => {
 
 .home-hero__actions .button--ghost::after {
   background: var(--home-orange);
+}
+
+.home-hero__mobile-visual {
+  display: none;
 }
 
 .home-hero__visual {
@@ -789,6 +809,76 @@ onBeforeUnmount(() => {
   .home-hero__service:nth-child(4) { border-top: 1px solid rgb(17 17 17 / 0.13); }
 }
 
+@media (max-width: 767px) {
+  .home-hero__mobile-visual {
+    display: block;
+    width: 100%;
+    max-width: calc(100vw - 32px);
+    margin: 0;
+    justify-self: start;
+    aspect-ratio: 1846 / 852;
+    border-radius: 24px;
+  }
+
+  .home-hero__mobile-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: inherit;
+  }
+
+  .home-hero__visual {
+    display: none;
+  }
+
+  .home-hero__proof {
+    height: auto;
+  }
+
+  .home-hero__proof-inner {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .home-hero__proof-item,
+  .home-hero__proof-item:first-child {
+    min-height: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 10px 4px;
+    text-align: center;
+  }
+
+  .home-hero__proof-item + .home-hero__proof-item {
+    border-top: 0;
+    border-left: 1px solid rgb(17 17 17 / 0.14);
+  }
+
+  .home-hero__proof-icon {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+
+  .home-hero__proof strong {
+    font-size: 11.5px;
+    white-space: normal;
+  }
+
+  .home-hero__proof-copy span {
+    font-size: 9.75px;
+    line-height: 1.25;
+    white-space: normal;
+  }
+
+  .home-hero__services {
+    display: none;
+  }
+}
+
 @media (width <= 600px) {
   .home-hero__inner {
     width: min(calc(100% - 32px), 560px);
@@ -818,33 +908,6 @@ onBeforeUnmount(() => {
   .home-hero__card-copy strong { font-size: 12px; padding: 6px 7px; }
   .home-hero__card-arrow { width: 30px; height: 30px; font-size: 17px; }
 
-  .home-hero__proof-inner {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .home-hero__proof-item,
-  .home-hero__proof-item:first-child {
-    min-height: 62px;
-    padding: 7px 0;
-  }
-
-  .home-hero__proof-item + .home-hero__proof-item {
-    border-top: 1px solid rgb(17 17 17 / 0.14);
-    border-left: 0;
-  }
-
-  .home-hero__service {
-    min-height: 72px;
-    gap: 8px;
-    padding: 9px;
-  }
-
-  .home-hero__service svg {
-    width: 24px;
-    height: 24px;
-    flex-basis: 24px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
