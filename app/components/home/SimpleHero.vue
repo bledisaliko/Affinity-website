@@ -1,5 +1,200 @@
 <script setup lang="ts">
+import type { ComponentPublicInstance } from 'vue'
 import { trackEventForHref } from '../../utils/tracking'
+
+type HeroServiceKey = 'apparel' | 'print' | 'signs' | 'promotional'
+
+interface HeroCard {
+  image: string
+  alt: string
+  label?: string
+  objectPosition?: string
+}
+
+interface HeroService {
+  title: string
+  titleLines: string[]
+  url: string
+  cards: [HeroCard, HeroCard, HeroCard, HeroCard]
+}
+
+const heroServices: Record<HeroServiceKey, HeroService> = {
+  apparel: {
+    title: 'Custom Apparel',
+    titleLines: ['Custom Apparel'],
+    url: '/apparel/',
+    cards: [
+      { image: '/images/apparel/apparel-mix.png', alt: 'Custom embroidered shirts, hoodies, jackets, hats and caps', objectPosition: '52% center' },
+      { image: '/images/apparel/team-screen-printed-shirts.webp', alt: 'Team T-shirts with screen-printed graphics', label: 'T-Shirts & Printing', objectPosition: 'center 54%' },
+      { image: '/images/apparel/branded-work-jacket.webp', alt: 'Branded work jacket with custom decoration', label: 'Jackets & Workwear', objectPosition: 'center 42%' },
+      { image: '/images/embroidery/embroidered-company-polo.webp', alt: 'Custom embroidered polo shirts', label: 'Polos & Embroidery', objectPosition: '51% center' }
+    ]
+  },
+  print: {
+    title: 'Business Print',
+    titleLines: ['Business Print'],
+    url: '/business-print/',
+    cards: [
+      { image: '/images/business-print/business-cards.webp', alt: 'Business cards and coordinated stationery', objectPosition: 'center 52%' },
+      { image: '/images/business-print/flyers-brochures.webp', alt: 'Printed flyers, brochures and presentation materials', label: 'Flyers & Brochures', objectPosition: 'center 55%' },
+      { image: '/images/business-print/brochures-print-generated.png', alt: 'Folded brochures and presentation folders', label: 'Folders & Brochures', objectPosition: 'center' },
+      { image: '/images/business-print/postcards-direct-mail.webp', alt: 'Printed postcards, menus and direct-mail stationery', label: 'Postcards & Stationery', objectPosition: 'center' }
+    ]
+  },
+  signs: {
+    title: 'Signs & Vehicle Graphics',
+    titleLines: ['Signs & Vehicle', 'Graphics'],
+    url: '/signs-vehicle-graphics/',
+    cards: [
+      { image: '/images/vehicle-graphics/commercial-vehicle-wrap.webp', alt: 'Wrapped commercial van with large-format graphics', objectPosition: '64% center' },
+      { image: '/images/signs/storefront-vinyl.webp', alt: 'Storefront signs and window graphics', label: 'Storefront & Window', objectPosition: 'center 58%' },
+      { image: '/images/signs/coroplast-signs.webp', alt: 'Printed coroplast signs for business promotion', label: 'Coroplast Signs', objectPosition: 'center' },
+      { image: '/images/signs/vinyl-banners.webp', alt: 'Printed banners and large-format graphics', label: 'Banners & Large Format', objectPosition: 'center' }
+    ]
+  },
+  promotional: {
+    title: 'Promotional Products',
+    titleLines: ['Promotional', 'Products'],
+    url: '/services/',
+    cards: [
+      { image: '/images/promotional-products/corporate-gifts.jpg', alt: 'Corporate gift box with branded merchandise and treats', objectPosition: 'center' },
+      { image: '/images/promotional-products/branded-mugs.webp', alt: 'Branded ceramic mugs and stainless travel tumbler', label: 'Mugs & Drinkware', objectPosition: 'center 72%' },
+      { image: '/images/promotional-products/tote-bags.png', alt: 'Black, natural and white branded tote bags', label: 'Tote Bags', objectPosition: 'center' },
+      { image: '/images/promotional-products/corporate-gifts.jpg', alt: 'Corporate gift box with branded merchandise', label: 'Corporate Gifts', objectPosition: 'center' }
+    ]
+  }
+}
+
+const serviceKeys = Object.keys(heroServices) as HeroServiceKey[]
+const cardSlotClasses = ['home-hero__card--apparel', 'home-hero__card--print', 'home-hero__card--vehicle', 'home-hero__card--polo']
+const activeServiceKey = ref<HeroServiceKey>('apparel')
+const activeService = computed(() => heroServices[activeServiceKey.value])
+const servicesElement = ref<HTMLElement | null>(null)
+const serviceElements: Partial<Record<HeroServiceKey, HTMLElement>> = {}
+const supportsHover = ref(true)
+const keyboardMode = ref(false)
+const indicator = reactive({ x: 0, y: 0, width: 0, height: 0, ready: false })
+
+let resetTimer: ReturnType<typeof setTimeout> | undefined
+let resizeObserver: ResizeObserver | undefined
+
+const indicatorStyle = computed(() => ({
+  width: `${indicator.width}px`,
+  height: `${indicator.height}px`,
+  transform: `translate3d(${indicator.x}px, ${indicator.y}px, 0)`
+}))
+
+function setServiceElement(key: HeroServiceKey, element: Element | ComponentPublicInstance | null) {
+  if (element instanceof HTMLElement) serviceElements[key] = element
+}
+
+function updateIndicator() {
+  nextTick(() => {
+    const container = servicesElement.value
+    const item = serviceElements[activeServiceKey.value]
+    if (!container || !item) return
+    const containerRect = container.getBoundingClientRect()
+    const itemRect = item.getBoundingClientRect()
+    const inset = Number.parseFloat(getComputedStyle(container).getPropertyValue('--service-indicator-inset')) || 8
+    indicator.x = itemRect.left - containerRect.left + inset
+    indicator.y = itemRect.top - containerRect.top + inset
+    indicator.width = Math.max(0, itemRect.width - inset * 2)
+    indicator.height = Math.max(0, itemRect.height - inset * 2)
+    indicator.ready = true
+  })
+}
+
+function clearResetTimer() {
+  if (resetTimer) clearTimeout(resetTimer)
+  resetTimer = undefined
+}
+
+function previewService(key: HeroServiceKey) {
+  clearResetTimer()
+  activeServiceKey.value = key
+}
+
+function handlePointerPreview(key: HeroServiceKey, event: PointerEvent) {
+  if (event.pointerType !== 'mouse') return
+  supportsHover.value = true
+  previewService(key)
+}
+
+function scheduleDefaultService() {
+  clearResetTimer()
+  resetTimer = setTimeout(() => {
+    activeServiceKey.value = 'apparel'
+  }, 160)
+}
+
+function handleFocusPreview(key: HeroServiceKey) {
+  if (keyboardMode.value || supportsHover.value) previewService(key)
+}
+
+function handleServiceClick(key: HeroServiceKey) {
+  const service = heroServices[key]
+  if (!supportsHover.value && activeServiceKey.value !== key) {
+    previewService(key)
+    return
+  }
+  trackEventForHref(service.url, { location: 'homepage_hero_service_selector', service: key })
+  navigateTo(service.url)
+}
+
+function handleServiceKeydown(event: KeyboardEvent, key: HeroServiceKey) {
+  const currentIndex = serviceKeys.indexOf(key)
+  let nextIndex = currentIndex
+  if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (currentIndex + 1) % serviceKeys.length
+  else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (currentIndex - 1 + serviceKeys.length) % serviceKeys.length
+  else if (event.key === 'Home') nextIndex = 0
+  else if (event.key === 'End') nextIndex = serviceKeys.length - 1
+  else return
+
+  event.preventDefault()
+  const nextKey = serviceKeys[nextIndex]!
+  previewService(nextKey)
+  serviceElements[nextKey]?.focus()
+}
+
+function handleImageClick() {
+  trackEventForHref(activeService.value.url, { location: 'homepage_hero_service_image', service: activeServiceKey.value })
+}
+
+function preloadServiceImages() {
+  const urls = new Set(serviceKeys.flatMap(key => heroServices[key].cards.map(card => card.image)))
+  urls.forEach((url) => {
+    const image = new Image()
+    image.src = url
+  })
+}
+
+function markKeyboardInput() {
+  keyboardMode.value = true
+}
+
+function markPointerInput(event: PointerEvent) {
+  keyboardMode.value = false
+  if (event.pointerType === 'mouse') supportsHover.value = true
+}
+
+watch(activeServiceKey, updateIndicator)
+
+onMounted(() => {
+  supportsHover.value = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+  preloadServiceImages()
+  updateIndicator()
+  resizeObserver = new ResizeObserver(updateIndicator)
+  if (servicesElement.value) resizeObserver.observe(servicesElement.value)
+  window.addEventListener('keydown', markKeyboardInput, { passive: true })
+  window.addEventListener('pointerdown', markPointerInput, { passive: true })
+})
+
+onBeforeUnmount(() => {
+  clearResetTimer()
+  resizeObserver?.disconnect()
+  window.removeEventListener('keydown', markKeyboardInput)
+  window.removeEventListener('pointerdown', markPointerInput)
+})
 </script>
 
 <template>
@@ -28,33 +223,41 @@ import { trackEventForHref } from '../../utils/tracking'
         </div>
       </div>
 
-      <div class="home-hero__visual" aria-label="Examples of custom apparel, business printing and vehicle graphics">
-        <NuxtLink class="home-hero__card home-hero__card--apparel" to="/apparel/" aria-label="Explore custom apparel">
-          <img src="/images/apparel/apparel-mix.png" alt="Custom embroidered shirts and hats" width="1448" height="1086" loading="eager" fetchpriority="high" decoding="async">
-        </NuxtLink>
-
-        <NuxtLink class="home-hero__card home-hero__card--print" to="/business-print/">
-          <span class="home-hero__card-copy">
-            <strong>Business<br>Print</strong>
-            <span class="home-hero__card-arrow" aria-hidden="true">→</span>
-          </span>
-          <img src="/images/simple/business-print.jpg" alt="Custom business cards and print materials" width="1400" height="933" loading="eager" decoding="async">
-        </NuxtLink>
-
-        <NuxtLink class="home-hero__card home-hero__card--vehicle" to="/signs-vehicle-graphics/">
-          <span class="home-hero__card-copy">
-            <strong>Signs &amp;<br>Vehicle Graphics</strong>
-            <span class="home-hero__card-arrow" aria-hidden="true">→</span>
-          </span>
-          <img src="/images/vehicle-graphics/commercial-vehicle-wrap.webp" alt="Branded commercial vehicle graphics" width="1200" height="900" loading="eager" decoding="async">
-        </NuxtLink>
-
-        <NuxtLink class="home-hero__card home-hero__card--polo" to="/embroidery/">
-          <span class="home-hero__card-copy">
-            <strong>Custom<br>Apparel</strong>
-            <span class="home-hero__card-arrow" aria-hidden="true">→</span>
-          </span>
-          <img src="/images/embroidery/embroidered-company-polo.webp" alt="Custom embroidered polo shirts" width="1200" height="900" loading="eager" decoding="async">
+      <div
+        id="home-hero-service-preview"
+        class="home-hero__visual"
+        :aria-label="`${activeService.title} examples`"
+        @pointerenter="clearResetTimer"
+        @pointerleave="scheduleDefaultService"
+      >
+        <NuxtLink
+          v-for="(card, index) in activeService.cards"
+          :key="cardSlotClasses[index]"
+          class="home-hero__card"
+          :class="cardSlotClasses[index]"
+          :to="activeService.url"
+          :aria-label="`Open ${activeService.title}: ${card.label || card.alt}`"
+          @click="handleImageClick"
+        >
+          <Transition name="home-hero-card-swap">
+            <span v-if="card.label" :key="`${activeServiceKey}-${card.label}`" class="home-hero__card-copy">
+              <strong>{{ card.label }}</strong>
+              <span class="home-hero__card-arrow" aria-hidden="true">→</span>
+            </span>
+          </Transition>
+          <Transition name="home-hero-image-swap">
+            <img
+              :key="`${activeServiceKey}-${card.image}-${index}`"
+              :src="card.image"
+              :alt="card.alt"
+              width="1448"
+              height="1086"
+              :style="{ objectPosition: card.objectPosition || 'center' }"
+              loading="eager"
+              :fetchpriority="activeServiceKey === 'apparel' && index === 0 ? 'high' : 'auto'"
+              decoding="async"
+            >
+          </Transition>
         </NuxtLink>
       </div>
 
@@ -75,23 +278,43 @@ import { trackEventForHref } from '../../utils/tracking'
         </div>
       </div>
 
-      <nav class="home-hero__services" aria-label="Featured services">
-        <NuxtLink class="home-hero__service home-hero__service--active" to="/apparel/">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 5 2 9l3 2 2-2v12h10V9l2 2 3-2-2-4-4-2a4 4 0 0 1-8 0Z"/></svg>
-          <span>Custom Apparel</span>
-        </NuxtLink>
-        <NuxtLink class="home-hero__service" to="/business-print/">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>
-          <span>Business Print</span>
-        </NuxtLink>
-        <NuxtLink class="home-hero__service" to="/signs-vehicle-graphics/">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 17-2-2v-4l2-1 2-4h10l2 4 2 1v4l-2 2"/><path d="M5 17v2h3v-2h8v2h3v-2"/><path d="M5 10h14"/><circle cx="7.5" cy="14" r="1"/><circle cx="16.5" cy="14" r="1"/></svg>
-          <span>Signs &amp; Vehicle<br>Graphics</span>
-        </NuxtLink>
-        <NuxtLink class="home-hero__service" to="/services/">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M7.5 8C5 8 5 4 7.5 4 10 4 12 8 12 8s2-4 4.5-4S19 8 16.5 8"/></svg>
-          <span>Promotional<br>Products</span>
-        </NuxtLink>
+      <nav
+        ref="servicesElement"
+        class="home-hero__services"
+        :class="{ 'home-hero__services--ready': indicator.ready }"
+        role="tablist"
+        aria-label="Featured services"
+        @pointerenter="clearResetTimer"
+        @pointerleave="scheduleDefaultService"
+      >
+        <span class="home-hero__service-indicator" :style="indicatorStyle" aria-hidden="true"></span>
+        <button
+          v-for="key in serviceKeys"
+          :key="key"
+          :ref="element => setServiceElement(key, element)"
+          class="home-hero__service"
+          :class="{ 'home-hero__service--active': activeServiceKey === key }"
+          type="button"
+          role="tab"
+          :aria-selected="activeServiceKey === key"
+          aria-controls="home-hero-service-preview"
+          :aria-label="`${heroServices[key].title}: preview service images`"
+          @pointerenter="handlePointerPreview(key, $event)"
+          @focus="handleFocusPreview(key)"
+          @blur="scheduleDefaultService"
+          @keydown="handleServiceKeydown($event, key)"
+          @click="handleServiceClick(key)"
+        >
+          <svg v-if="key === 'apparel'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 5 2 9l3 2 2-2v12h10V9l2 2 3-2-2-4-4-2a4 4 0 0 1-8 0Z"/></svg>
+          <svg v-else-if="key === 'print'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg>
+          <svg v-else-if="key === 'signs'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 17-2-2v-4l2-1 2-4h10l2 4 2 1v4l-2 2"/><path d="M5 17v2h3v-2h8v2h3v-2"/><path d="M5 10h14"/><circle cx="7.5" cy="14" r="1"/><circle cx="16.5" cy="14" r="1"/></svg>
+          <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M7.5 8C5 8 5 4 7.5 4 10 4 12 8 12 8s2-4 4.5-4S19 8 16.5 8"/></svg>
+          <span>
+            <template v-for="(line, lineIndex) in heroServices[key].titleLines" :key="line">
+              {{ line }}<br v-if="lineIndex < heroServices[key].titleLines.length - 1">
+            </template>
+          </span>
+        </button>
       </nav>
     </div>
   </section>
@@ -263,11 +486,13 @@ import { trackEventForHref } from '../../utils/tracking'
 .home-hero__card--polo { grid-column: 3; grid-row: 2; }
 
 .home-hero__card > img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 240ms ease;
+  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .home-hero__card--apparel > img { object-position: 52% center; }
@@ -283,6 +508,36 @@ import { trackEventForHref } from '../../utils/tracking'
   display: grid;
   justify-items: start;
   gap: 10px;
+}
+
+.home-hero-image-swap-enter-active,
+.home-hero-image-swap-leave-active {
+  transition:
+    opacity 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-hero-image-swap-enter-from {
+  opacity: 0;
+  transform: scale(1.025);
+}
+
+.home-hero-image-swap-leave-to {
+  opacity: 0;
+  transform: scale(0.985);
+}
+
+.home-hero-card-swap-enter-active,
+.home-hero-card-swap-leave-active {
+  transition:
+    opacity 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-hero-card-swap-enter-from,
+.home-hero-card-swap-leave-to {
+  opacity: 0;
+  transform: translateY(5px);
 }
 
 .home-hero__card-copy strong {
@@ -377,6 +632,8 @@ import { trackEventForHref } from '../../utils/tracking'
 }
 
 .home-hero__services {
+  --service-indicator-inset: 8px;
+  position: relative;
   display: flex;
   height: 82px;
   min-width: 0;
@@ -388,7 +645,25 @@ import { trackEventForHref } from '../../utils/tracking'
   box-shadow: 0 14px 32px rgb(39 32 25 / 0.09);
 }
 
+.home-hero__service-indicator {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgb(29 24 20 / 0.08);
+  pointer-events: none;
+  transition:
+    width 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .home-hero__service {
+  position: relative;
+  z-index: 1;
   display: flex;
   min-width: 0;
   flex: 1 1 0;
@@ -398,9 +673,13 @@ import { trackEventForHref } from '../../utils/tracking'
   color: var(--home-ink);
   font-size: clamp(10.5px, 0.9vw, 13px);
   font-weight: 800;
+  font-family: inherit;
   line-height: 1.2;
   padding: 10px 12px;
+  border: 0;
+  background: transparent;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .home-hero__service + .home-hero__service {
@@ -414,11 +693,17 @@ import { trackEventForHref } from '../../utils/tracking'
 }
 
 .home-hero__service--active {
-  margin: 8px;
+  color: var(--home-orange);
+}
+
+.home-hero__services:not(.home-hero__services--ready) .home-hero__service--active::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: var(--service-indicator-inset);
   border-radius: 999px;
   background: #ffffff;
   box-shadow: 0 6px 18px rgb(29 24 20 / 0.08);
-  color: var(--home-orange);
 }
 
 .home-hero__service--active + .home-hero__service { border-left: 0; }
@@ -479,6 +764,7 @@ import { trackEventForHref } from '../../utils/tracking'
   .home-hero__proof-item:first-child { padding-left: 0; }
 
   .home-hero__services {
+    --service-indicator-inset: 6px;
     display: grid;
     height: auto;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -491,7 +777,11 @@ import { trackEventForHref } from '../../utils/tracking'
   }
 
   .home-hero__service--active {
-    margin: 6px;
+    border-radius: 18px;
+  }
+
+  .home-hero__service-indicator,
+  .home-hero__services:not(.home-hero__services--ready) .home-hero__service--active::before {
     border-radius: 18px;
   }
 
@@ -558,6 +848,11 @@ import { trackEventForHref } from '../../utils/tracking'
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-hero__card > img { transition: none; }
+  .home-hero__card > img,
+  .home-hero__service-indicator,
+  .home-hero-image-swap-enter-active,
+  .home-hero-image-swap-leave-active,
+  .home-hero-card-swap-enter-active,
+  .home-hero-card-swap-leave-active { transition: none; }
 }
 </style>

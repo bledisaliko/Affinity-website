@@ -30,6 +30,18 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/png', href: '/brand/affinity-favicon.png' },
         { rel: 'apple-touch-icon', href: '/brand/affinity-favicon.png' }
+      ],
+      script: [
+        {
+          async: true,
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-3CCCVJ8TLL'
+        },
+        {
+          textContent: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3CCCVJ8TLL');`
+        }
       ]
     }
   },

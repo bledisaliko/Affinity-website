@@ -132,8 +132,8 @@ export const splitPanels: SplitPanel[] = [
     title: 'For your customers.',
     body: 'Print, signs and campaigns that make your business easier to notice, understand and remember.',
     image: {
-      src: '/images/simple/business-print.jpg',
-      alt: 'Printed marketing materials prepared for customers'
+      src: '/images/simple/customer-products.png',
+      alt: 'Branded shirts, tote bags, bottles, pens and promotional products'
     }
   }
 ]
