@@ -1,4 +1,17 @@
+node_modules/
+.nuxt/
+.output/
+dist/
+outputs/
+work/
+reports/
+--port/
+.env
+.env.*
+!.env.example
 api/quote-config.php
+public/api/quote-config.php
+deploy/api/quote-config.php
 private/
 tmp/
 uploads/

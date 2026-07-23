@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "eyebrow": "Custom Apparel, Print, Signs and Marketing",
+    "headline": "Make Your Business Look Ready for Bigger Opportunities.",
+    "body": "Affinity Creative produces custom apparel, professional print, storefront graphics, vehicle branding and digital marketing for businesses across Toronto and the GTA.",
+    "trustLine": "Bring us the idea. We will help turn it into something your customers can see, wear and remember."
+  },
+  "pillarsIntro": {
+    "eyebrow": "Core Services",
+    "headline": "Everything You Need to Put Your Business in View.",
+    "body": "Start with one service or bring several pieces together for a coordinated launch, campaign or company refresh."
+  },
+  "touchpoints": {
+    "headline": "One Brand, Many Applications.",
+    "body": "Need uniforms, vehicle graphics and printed materials for the same company? Send us the logo once and we can prepare the artwork for each use.",
+    "items": [
+      "Embroidered polo",
+      "Printed work shirt",
+      "Business card",
+      "Flyer",
+      "Storefront graphic",
+      "Coroplast sign",
+      "Vehicle lettering",
+      "Website",
+      "Google campaign",
+      "Social-media graphic"
+    ]
+  },
+  "finalCta": {
+    "headline": "Have a Project in Mind?",
+    "body": "Send us the product, quantity, artwork and required date. We will review the details and help you choose the next step."
+  }
+}

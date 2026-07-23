@@ -1,0 +1,221 @@
+[
+  {
+    "id": "custom-apparel",
+    "slug": "custom-apparel",
+    "title": "Custom Apparel",
+    "shortTitle": "Apparel",
+    "category": "Apparel",
+    "heroHeading": "Custom Apparel That Makes Your Team Look Like a Team.",
+    "shortDescription": "Create branded T-shirts, polos, hoodies, jackets, workwear and hats for employees, events, promotions and everyday use.",
+    "fullDescription": "Create branded T-shirts, polos, hoodies, jackets, workwear and hats for employees, events, promotions and everyday use. We can help match the garment and decoration method to your logo, quantity and working environment.",
+    "featuredImage": "/images/apparel/custom-printed-hoodie.webp",
+    "gallery": [
+      "/images/apparel/custom-printed-hoodie.webp",
+      "/images/embroidery/embroidered-company-polo.webp",
+      "/images/apparel/branded-work-jacket.webp"
+    ],
+    "icon": "Shirt",
+    "benefits": [
+      "Branded apparel for staff, crews, events and promotions",
+      "Garment options for daily wear, outdoor work and customer-facing teams",
+      "Artwork prepared for the chosen decoration method",
+      "Guidance on embroidery, DTF and screen printing"
+    ],
+    "applications": [
+      "T-shirts and long sleeves",
+      "Polos and work shirts",
+      "Hoodies and crewneck sweatshirts",
+      "Jackets and outerwear",
+      "Hats and toques",
+      "Safety apparel",
+      "Staff uniforms",
+      "Event and team apparel"
+    ],
+    "methods": "Choose embroidery for a dimensional stitched finish, DTF for detailed full-colour artwork, or screen printing for bold repeat and larger orders.",
+    "quoteNeeds": [
+      "Garment type",
+      "Approximate quantity",
+      "Logo or artwork file",
+      "Decoration location",
+      "Required date"
+    ],
+    "quoteCopy": "Send the garment type, approximate quantity, logo, decoration location and required date. If you have not selected the garment yet, tell us how it will be used and we can help narrow the options.",
+    "combineWith": [
+      "Vehicle lettering for service teams",
+      "Business cards and flyers for sales visits",
+      "Signs and banners for events"
+    ],
+    "nextStep": "Send the garment details and artwork you have. We will help narrow the best decoration method before quoting.",
+    "relatedTechniques": ["Embroidery", "DTF Printing", "Screen Printing"],
+    "relatedFaqs": ["printing-method", "method-difference", "quote-request"],
+    "featured": true,
+    "displayOrder": 1,
+    "seoTitle": "Custom Apparel GTA | T-Shirts, Hoodies, Polos and Workwear",
+    "metaDescription": "Custom apparel for GTA businesses, including T-shirts, polos, hoodies, jackets, hats, uniforms, workwear, embroidery, DTF and screen printing."
+  },
+  {
+    "id": "business-printing",
+    "slug": "business-printing",
+    "title": "Print and Marketing Materials",
+    "shortTitle": "Print",
+    "category": "Business Print",
+    "heroHeading": "Professional Print for Everyday Business.",
+    "shortDescription": "Professional materials for sales, service, events and local promotion.",
+    "fullDescription": "Create business cards, flyers, brochures, postcards, door hangers, menus and presentation materials that make your company easier to recognize and remember.",
+    "featuredImage": "/images/printing/business-card-printing.webp",
+    "gallery": [
+      "/images/printing/business-card-printing.webp",
+      "/images/printing/flyer-brochure-printing.webp",
+      "/images/printing/direct-mail-postcards.webp"
+    ],
+    "icon": "Files",
+    "benefits": [
+      "Printed materials for sales, service and local promotion",
+      "Artwork review for clean print output",
+      "Options for small runs and recurring business needs",
+      "Formats that support counters, appointments, mail and events"
+    ],
+    "applications": [
+      "Business cards",
+      "Flyers",
+      "Brochures",
+      "Postcards",
+      "Door hangers",
+      "Menus",
+      "Presentation folders",
+      "Stickers and labels",
+      "Direct-mail materials"
+    ],
+    "methods": "Paper stock, finish, size and quantity all affect the final result. We can help choose a practical format for how the piece will be handed out, mailed or displayed.",
+    "quoteNeeds": [
+      "Product type",
+      "Finished size",
+      "Quantity",
+      "Artwork file",
+      "Required date"
+    ],
+    "quoteCopy": "Send the product, size, quantity, artwork and required date. We can also review or prepare print-ready artwork.",
+    "combineWith": [
+      "Staff apparel for sales and events",
+      "Storefront signs and window graphics",
+      "Landing pages and campaign graphics"
+    ],
+    "nextStep": "Send the item type, size, quantity, artwork and deadline. If the file is not ready, tell us what the piece needs to say.",
+    "relatedTechniques": [],
+    "relatedFaqs": ["combine-services", "logo-prep", "artwork-formats"],
+    "featured": true,
+    "displayOrder": 2,
+    "seoTitle": "Business Printing GTA | Cards, Flyers, Brochures and Mail",
+    "metaDescription": "Business cards, flyers, brochures, postcards, door hangers, menus, folders, stickers and printed marketing materials for GTA companies."
+  },
+  {
+    "id": "signs-large-format",
+    "slug": "signs-large-format",
+    "title": "Signs and Large Format",
+    "shortTitle": "Signs",
+    "category": "Signs",
+    "heroHeading": "Signs and Graphics That Put Your Business in View.",
+    "shortDescription": "Signs, banners, storefront graphics, window film, wall graphics and vehicle branding.",
+    "fullDescription": "Use storefront graphics, banners, coroplast signs, privacy film, wall graphics and vehicle branding to make your location, promotion or fleet easier to notice.",
+    "featuredImage": "/images/signage/coroplast-lawn-signs.webp",
+    "gallery": [
+      "/images/signage/coroplast-lawn-signs.webp",
+      "/images/window-graphics/storefront-window-graphics.webp",
+      "/images/vehicle-graphics/vehicle-lettering.webp"
+    ],
+    "icon": "PanelTop",
+    "benefits": [
+      "Outdoor and indoor graphics for visibility",
+      "Options for storefronts, offices, events and vehicles",
+      "Artwork sized for the surface and viewing distance",
+      "Materials selected for short-term or longer-term use"
+    ],
+    "applications": [
+      "Coroplast signs",
+      "Lawn and directional signs",
+      "Banners",
+      "Storefront graphics",
+      "Window graphics",
+      "Frosted privacy film",
+      "Wall graphics",
+      "Vehicle lettering",
+      "Partial wraps",
+      "Full wraps"
+    ],
+    "methods": "Rigid signs, vinyl graphics, banners, window film and vehicle branding each need different sizing and file preparation. We will help match the material to the location and expected use.",
+    "quoteNeeds": [
+      "Approximate dimensions",
+      "Installation location",
+      "Photos of the space or vehicle",
+      "Artwork file",
+      "Vehicle year, make and model when applicable"
+    ],
+    "quoteCopy": "Send approximate dimensions, installation location, photos and artwork. Vehicle projects should also include the year, make and model.",
+    "combineWith": [
+      "Business cards and flyers",
+      "Staff apparel",
+      "Website and campaign graphics"
+    ],
+    "nextStep": "Send the size, location, surface, artwork and timeline. Photos are helpful for window, wall and vehicle graphics.",
+    "relatedTechniques": [],
+    "relatedFaqs": ["window-graphics", "vehicle-graphics", "quote-request"],
+    "featured": true,
+    "displayOrder": 3,
+    "seoTitle": "Signs and Large Format GTA | Banners, Windows and Vehicles",
+    "metaDescription": "Signs, banners, window graphics, privacy film, wall graphics, vehicle lettering and wraps for businesses across Toronto and the GTA."
+  },
+  {
+    "id": "websites-digital-marketing",
+    "slug": "websites-digital-marketing",
+    "title": "Websites and Digital Marketing",
+    "shortTitle": "Digital",
+    "category": "Digital Marketing",
+    "heroHeading": "Websites and Campaigns Built to Generate Action.",
+    "shortDescription": "Business websites, landing pages, local search support and advertising creative.",
+    "fullDescription": "We create focused business websites, landing pages and campaign graphics designed to turn interest into calls, forms and customer inquiries.",
+    "featuredImage": "/images/websites/business-website-design.webp",
+    "gallery": [
+      "/images/websites/business-website-design.webp",
+      "/images/marketing/google-ads-campaign.webp",
+      "/images/marketing/social-media-graphics.webp"
+    ],
+    "icon": "MonitorSmartphone",
+    "benefits": [
+      "Web pages designed around calls, forms and clear offers",
+      "Campaign graphics for paid and organic promotion",
+      "Local SEO and Google Business Profile support",
+      "Creative that can connect with print and signage campaigns"
+    ],
+    "applications": [
+      "Business websites",
+      "Landing pages",
+      "Local SEO",
+      "Google Business Profile support",
+      "Google Ads",
+      "Facebook advertising",
+      "Instagram advertising",
+      "Campaign graphics"
+    ],
+    "methods": "Start with what your business offers, who you want to reach and what action visitors should take. The page or campaign can then be shaped around that goal.",
+    "quoteNeeds": [
+      "Business offer",
+      "Target audience",
+      "Current website or links",
+      "Services being promoted",
+      "Brand files and photos"
+    ],
+    "quoteCopy": "Tell us what your business offers, who you want to reach and what action visitors should take.",
+    "combineWith": [
+      "Flyers, postcards and door hangers",
+      "Signs and window graphics",
+      "Apparel for events or launch teams"
+    ],
+    "nextStep": "Send the offer, audience, existing website or social links, and any brand files. We will suggest a practical starting point.",
+    "relatedTechniques": [],
+    "relatedFaqs": ["websites-ads", "combine-services", "small-business"],
+    "featured": true,
+    "displayOrder": 4,
+    "seoTitle": "Websites and Digital Marketing GTA | Websites, SEO and Ads",
+    "metaDescription": "Business websites, landing pages, local SEO, Google Business Profile support, Google Ads and social advertising creative for GTA companies."
+  }
+]

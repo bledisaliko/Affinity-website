@@ -1,0 +1,62 @@
+[
+  {
+    "id": "printing-method",
+    "question": "Which apparel printing method should I choose?",
+    "answer": "The right method depends on the garment, artwork detail, quantity and intended use. Embroidery is often chosen for a premium stitched finish, DTF for detailed full-colour artwork and smaller batches, and screen printing for bold repeatable runs. A quote request can include a recommendation.",
+    "category": "Apparel"
+  },
+  {
+    "id": "method-difference",
+    "question": "What is the difference between embroidery, DTF and screen printing?",
+    "answer": "Embroidery stitches thread into the garment, DTF applies a full-colour transfer film, and screen printing pushes ink through a screen for strong graphic colour. Each method has different strengths and no one method is always better.",
+    "category": "Apparel"
+  },
+  {
+    "id": "logo-prep",
+    "question": "Can you prepare or improve my logo?",
+    "answer": "Yes. Artwork can be reviewed for print readiness, cleaned up when practical, or prepared for the selected production method. Vector files are preferred when available.",
+    "category": "Artwork"
+  },
+  {
+    "id": "combine-services",
+    "question": "Can I combine apparel, print and signage?",
+    "answer": "Yes. For example, a company can request staff shirts, vehicle lettering and printed handouts together so the artwork is prepared for each format.",
+    "category": "Planning"
+  },
+  {
+    "id": "small-business",
+    "question": "Do you work with small businesses?",
+    "answer": "Yes. The website is designed for GTA businesses that need practical help choosing the right mix of apparel, print, signage and marketing support.",
+    "category": "Planning"
+  },
+  {
+    "id": "window-graphics",
+    "question": "Can you produce window graphics and privacy film?",
+    "answer": "Yes. Window graphics, frosted privacy film and decorative privacy film can be planned for storefronts, offices and customer-facing spaces.",
+    "category": "Signs"
+  },
+  {
+    "id": "vehicle-graphics",
+    "question": "Do you provide vehicle graphics?",
+    "answer": "Yes. Vehicle lettering, partial wraps and full wraps can be requested depending on the vehicle, artwork and visibility goals.",
+    "category": "Signs"
+  },
+  {
+    "id": "websites-ads",
+    "question": "Can you build websites and manage advertising?",
+    "answer": "Yes. Website design, landing pages, local SEO support, Google Business Profile support and digital advertising creative are included in the service mix.",
+    "category": "Digital"
+  },
+  {
+    "id": "artwork-formats",
+    "question": "Which artwork formats should I provide?",
+    "answer": "Vector files such as AI, EPS, SVG or print-ready PDF are preferred. High-resolution PNG or JPG files may work for some projects, but artwork should be reviewed before production.",
+    "category": "Artwork"
+  },
+  {
+    "id": "quote-request",
+    "question": "How do I request a quote?",
+    "answer": "Use the quote form with your contact details, service category, approximate quantity, timing and project notes. You can also call or email using the contact details shown on the site.",
+    "category": "Contact"
+  }
+]

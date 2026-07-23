@@ -1,0 +1,23 @@
+{
+  "companyName": "Affinity Creative",
+  "domain": "https://affinitycreative.ca",
+  "phone": "437-313-1510",
+  "phoneHref": "tel:+14373131510",
+  "email": "info@affinitycreative.ca",
+  "emailHref": "mailto:info@affinitycreative.ca",
+  "address": "",
+  "businessHours": "",
+  "servingLine": "Serving Toronto and the Greater Toronto Area",
+  "defaultOgImage": "/og-default.jpg",
+  "socialLinks": [
+    {
+      "label": "WhatsApp",
+      "url": "https://wa.me/14373131510"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/affinity__creative/"
+    }
+  ],
+  "copyright": "\u00a9 2026 Affinity Creative. All rights reserved."
+}

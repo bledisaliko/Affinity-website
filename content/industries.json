@@ -1,0 +1,14 @@
+[
+  { "id": "construction-trades", "title": "Construction and trades", "description": "Durable apparel, job-site signs, vehicle graphics and local campaign materials." },
+  { "id": "restoration", "title": "Restoration companies", "description": "Fleet graphics, branded uniforms, service flyers and urgent-service campaigns." },
+  { "id": "property-management", "title": "Property management", "description": "Building notices, signage, staff apparel and tenant communication materials." },
+  { "id": "restaurants", "title": "Restaurants and hospitality", "description": "Menus, window graphics, launch flyers, staff apparel and campaign creative." },
+  { "id": "cleaning", "title": "Cleaning companies", "description": "Uniforms, vehicle lettering, door hangers and local advertising support." },
+  { "id": "real-estate", "title": "Real-estate professionals", "description": "Lawn signs, open-house print, postcards and listing campaign assets." },
+  { "id": "automotive", "title": "Automotive businesses", "description": "Storefront graphics, service signage, apparel and vehicle branding." },
+  { "id": "retail", "title": "Retail stores", "description": "Storefront graphics, bags, stickers, promotional print and social creative." },
+  { "id": "professional-offices", "title": "Professional offices", "description": "Privacy film, presentation folders, business cards and polished office branding." },
+  { "id": "schools-teams", "title": "Schools and teams", "description": "Team apparel, event shirts, banners, signs and fundraising campaign materials." },
+  { "id": "community", "title": "Community organizations", "description": "Event apparel, signage, flyers, sponsor materials and awareness campaigns." },
+  { "id": "startups-small-businesses", "title": "Startups and small businesses", "description": "Launch kits, websites, apparel, print and practical brand guidance." }
+]

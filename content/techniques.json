@@ -1,0 +1,41 @@
+[
+  {
+    "id": "embroidery",
+    "slug": "embroidery",
+    "title": "Embroidery",
+    "accent": "#6846FF",
+    "summary": "Premium stitched branding with a durable, dimensional finish.",
+    "explanation": "Embroidery gives logos and names a raised thread finish that feels polished on uniforms, outerwear, hats and staff apparel.",
+    "idealUses": ["Corporate uniforms", "Staff polos", "Jackets", "Hats", "Workwear"],
+    "garments": ["Polos", "Jackets", "Hats", "Work shirts", "Corporate uniforms"],
+    "finish": ["Dimensional", "Textured", "Professional", "Long wearing"],
+    "durability": "Best suited to garments and accessories where a stitched finish supports repeated wear and washing.",
+    "image": "/images/embroidery/embroidered-company-polo.webp"
+  },
+  {
+    "id": "dtf-printing",
+    "slug": "dtf-printing",
+    "title": "DTF Printing",
+    "accent": "#00BFD8",
+    "summary": "Detailed full-colour transfers suitable for short and medium apparel runs.",
+    "explanation": "DTF printing is a flexible choice for detailed logos, multi-colour artwork and smaller apparel batches where setup efficiency matters.",
+    "idealUses": ["Detailed artwork", "Multi-colour logos", "Smaller batches", "Hoodies", "Event shirts"],
+    "garments": ["T-shirts", "Hoodies", "Sweatshirts", "Team apparel", "Promotional apparel"],
+    "finish": ["Full colour", "Clean detail", "Smooth transfer", "Flexible placement"],
+    "durability": "A practical choice for many apparel projects when artwork detail and production flexibility are both important.",
+    "image": "/images/dtf/dtf-transfer-film.webp"
+  },
+  {
+    "id": "screen-printing",
+    "slug": "screen-printing",
+    "title": "Screen Printing",
+    "accent": "#FF5A1F",
+    "summary": "Bold, reliable printing designed for repeat orders and larger quantities.",
+    "explanation": "Screen printing works well for strong graphic marks, events, team apparel and repeat uniform orders where consistent colour coverage is needed.",
+    "idealUses": ["Company uniforms", "Events", "Promotions", "Teams", "Higher-volume apparel"],
+    "garments": ["T-shirts", "Hoodies", "Crewnecks", "Promo apparel", "Team wear"],
+    "finish": ["Bold colour", "Flat ink finish", "Repeatable", "Graphic"],
+    "durability": "A dependable option for repeat runs and higher quantities when artwork and garment choice fit the process.",
+    "image": "/images/screen-printing/screen-printing-process.webp"
+  }
+]
