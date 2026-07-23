@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/ydhxqex4/affinitycreative.ca/
-    - /usr/bin/rsync -av --delete --exclude='.git' ./deploy/ "$DEPLOYPATH"
+    - /usr/bin/rsync -av --delete --exclude='.git' --exclude='.cpanel.yml' --exclude='.gitignore' --exclude='.env' ./ "$DEPLOYPATH"
