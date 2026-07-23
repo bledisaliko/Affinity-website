@@ -5,7 +5,11 @@ const deploy = join(resolve(process.cwd()), 'deploy')
 const required = [
   'index.html', '404.html', '.htaccess', '_nuxt', 'business-print/index.html',
   'api/quote-request.php', 'brand/affinity-header-logo.png', 'brand/affinity-footer-logo.png',
-  'images/home-hero/hero-collage.png', 'images/home-hero/banner-swoosh-clean.png', 'images/simple/team.png'
+  'images/home-hero/hero-collage.png', 'images/home-hero/banner-swoosh-clean.png',
+  'images/simple/team.png', 'images/simple/customer-products.png',
+  'images/promotional-products/corporate-gifts.jpg',
+  'images/promotional-products/branded-mugs.webp',
+  'images/promotional-products/tote-bags.png'
 ]
 const banned = [
   'home-redesign', 'applyHomeHero', 'scheduleApply', 'Your brand, made visible.',
@@ -35,6 +39,15 @@ for (const file of walk(deploy)) {
 const homepage = readFileSync(join(deploy, 'index.html'), 'utf8')
 const businessPrint = readFileSync(join(deploy, 'business-print', 'index.html'), 'utf8')
 if (!homepage.includes('Stand out.')) throw new Error('Final homepage hero is missing from deploy output.')
+if ((homepage.match(/googletagmanager\.com\/gtag\/js\?id=G-3CCCVJ8TLL/g) || []).length !== 1) {
+  throw new Error('Deploy homepage must contain exactly one Google tag loader.')
+}
+if ((homepage.match(/gtag\('config', 'G-3CCCVJ8TLL'\)/g) || []).length !== 1) {
+  throw new Error('Deploy homepage must contain exactly one Google tag configuration.')
+}
+if (!homepage.includes('/images/simple/customer-products.png')) {
+  throw new Error('Approved customer-products image is missing from deploy homepage.')
+}
 if (!businessPrint.includes('Guided Quote Builder') || !businessPrint.includes('Step 1 of 5')) {
   throw new Error('Guided business print quote builder is missing from the first render.')
 }

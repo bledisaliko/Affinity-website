@@ -42,6 +42,10 @@ const required = [
   'images/home-hero/hero-collage.png',
   'images/home-hero/banner-swoosh-clean.png',
   'images/simple/team.png',
+  'images/simple/customer-products.png',
+  'images/promotional-products/corporate-gifts.jpg',
+  'images/promotional-products/branded-mugs.webp',
+  'images/promotional-products/tote-bags.png',
   '.htaccess'
 ]
 
