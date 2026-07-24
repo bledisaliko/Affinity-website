@@ -39,10 +39,10 @@ for (const file of walk(deploy)) {
 const homepage = readFileSync(join(deploy, 'index.html'), 'utf8')
 const businessPrint = readFileSync(join(deploy, 'business-print', 'index.html'), 'utf8')
 if (!homepage.includes('Stand out.')) throw new Error('Final homepage hero is missing from deploy output.')
-if ((homepage.match(/googletagmanager\.com\/gtag\/js\?id=G-3CCCVJ8TLL/g) || []).length !== 1) {
+if ((homepage.match(/googletagmanager\.com\/gtag\/js\?id=G-REF62SP9DJ/g) || []).length !== 1) {
   throw new Error('Deploy homepage must contain exactly one Google tag loader.')
 }
-if ((homepage.match(/gtag\('config', 'G-3CCCVJ8TLL'\)/g) || []).length !== 1) {
+if ((homepage.match(/gtag\('config', 'G-REF62SP9DJ'\)/g) || []).length !== 1) {
   throw new Error('Deploy homepage must contain exactly one Google tag configuration.')
 }
 if (!homepage.includes('/images/simple/customer-products.png')) {

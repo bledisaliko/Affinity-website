@@ -94,8 +94,8 @@ assert(homepage.includes('/brand/affinity-footer-logo.png'), 'Footer brand logo 
 assert(homepage.includes('/brand/affinity-circle-patch.png'), 'Circular patch asset is missing.')
 assert(homepage.includes('/api/quote.php'), 'Quote form endpoint is missing.')
 assert(homepage.includes('Stand out. Make an impact.'), 'Final footer slogan is missing.')
-assert((homepage.match(/googletagmanager\.com\/gtag\/js\?id=G-3CCCVJ8TLL/g) || []).length === 1, 'Homepage must contain exactly one Google tag loader.')
-assert((homepage.match(/gtag\('config', 'G-3CCCVJ8TLL'\)/g) || []).length === 1, 'Homepage must contain exactly one Google tag configuration.')
+assert((homepage.match(/googletagmanager\.com\/gtag\/js\?id=G-REF62SP9DJ/g) || []).length === 1, 'Homepage must contain exactly one Google tag loader.')
+assert((homepage.match(/gtag\('config', 'G-REF62SP9DJ'\)/g) || []).length === 1, 'Homepage must contain exactly one Google tag configuration.')
 assert(homepage.includes('/images/simple/customer-products.png'), 'Approved customer-products image is missing.')
 
 const businessPrint = readFileSync(join(output, 'business-print/index.html'), 'utf8')

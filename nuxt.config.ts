@@ -34,13 +34,15 @@ export default defineNuxtConfig({
       script: [
         {
           async: true,
-          src: 'https://www.googletagmanager.com/gtag/js?id=G-3CCCVJ8TLL'
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-REF62SP9DJ',
+          tagPriority: -100
         },
         {
           textContent: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-3CCCVJ8TLL');`
+gtag('config', 'G-REF62SP9DJ');`,
+          tagPriority: -100
         }
       ]
     }
