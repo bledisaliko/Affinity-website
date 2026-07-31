@@ -26,7 +26,7 @@ const closeButton = ref<HTMLButtonElement | null>(null)
 const menuOverlay = ref<HTMLElement | null>(null)
 
 const secondaryNavigation = [
-  { number: '03', label: 'How It Works', to: '/#process' },
+  { number: '03', label: 'Shop', to: 'https://shop.affinitycreative.ca/' },
   { number: '04', label: 'Blog', to: '/blog/' },
   { number: '05', label: 'Contact', to: '/contact/' }
 ]
@@ -240,7 +240,7 @@ watch(
         <div class="home-nav-menu">
           <NuxtLink to="/">Home</NuxtLink>
           <ServicesDropdown class="nav__services-desktop" />
-          <NuxtLink to="/#process">How It Works</NuxtLink>
+          <NuxtLink to="https://shop.affinitycreative.ca/">Shop</NuxtLink>
           <NuxtLink to="/blog/">Blog</NuxtLink>
           <NuxtLink to="/contact/">Contact</NuxtLink>
         </div>
