@@ -276,7 +276,6 @@ useHead({
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-block-start: clamp(1.5rem, 3vw, 2.25rem);
-  border-block: 1px solid var(--color-line);
   padding-block: 1.1rem;
 }
 
