@@ -149,7 +149,10 @@ function main() {
   assert(site.phone === '437-313-1510', 'Phone must be 437-313-1510.')
   assert(site.emailHref === 'mailto:info@affinitycreative.ca', 'Email link is incorrect.')
   assert(site.phoneHref === 'tel:+14373131510', 'Phone link is incorrect.')
-  assert(site.address === '', 'Address should stay empty until confirmed.')
+  assert(
+    site.address === '376 Birchmount Rd, Scarborough, ON M1K 1M6',
+    'Address must be 376 Birchmount Rd, Scarborough, ON M1K 1M6.'
+  )
   assert(site.businessHours === '', 'Business hours should stay empty until confirmed.')
   assertNoBracketTokens(site, 'content/site.json')
 
