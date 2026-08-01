@@ -57,6 +57,8 @@ export interface BlogSection {
   title: string
   paragraphs: string[]
   bullets?: string[]
+  image?: ImageAsset
+  imageCaption?: string
 }
 
 export interface BlogArticle {
@@ -99,6 +101,7 @@ export const publicRoutes = [
   '/glass-finishes/',
   '/digital-marketing/',
   '/blog/',
+  '/blog/custom-apparel-logo-placement-guide/',
   '/blog/vehicle-graphics-marketing/',
   '/blog/local-seo-for-gta-businesses/',
   '/blog/direct-mail-canada-post/',
@@ -393,6 +396,111 @@ export const serviceDirectoryPages: ServicePage[] = [
 ].filter((page): page is ServicePage => Boolean(page))
 
 export const blogArticles: BlogArticle[] = [
+  {
+    slug: 'custom-apparel-logo-placement-guide',
+    path: '/blog/custom-apparel-logo-placement-guide/',
+    title: 'Where Should Your Logo Go? A Practical Apparel Placement Guide',
+    seoTitle: 'Custom Apparel Logo Placement Guide | Affinity Creative',
+    description: 'A practical guide to choosing left-chest, centre, full-front, back, neck and sleeve logo placements for branded apparel.',
+    category: 'Custom Apparel',
+    publishedAt: '2026-07-31',
+    updatedAt: '2026-07-31',
+    readingTime: '8 min read',
+    image: {
+      src: '/images/blog/apparel-logo-placement-guide.webp',
+      alt: 'Custom shirts, polo, hoodie and cap arranged with logo placement markers'
+    },
+    relatedService: { label: 'Explore Custom Apparel', href: '/apparel/' },
+    intro: [
+      'Good logo placement should feel intentional before anyone notices the technical details. It helps a uniform look professional, makes an event shirt easier to read and gives promotional apparel the right amount of visual impact.',
+      'The best position depends on the garment, the artwork, the decoration method and how the piece will be worn. Use the ranges below as planning guides; final scale should always be confirmed on a proof for the actual garment sizes.'
+    ],
+    sections: [
+      {
+        title: 'Start with the job the garment needs to do',
+        paragraphs: [
+          'A customer-facing polo usually needs a quieter placement than a campaign T-shirt. A work hoodie may need identification on the chest and stronger visibility on the back. Decide what someone should notice first, then choose the print location.'
+        ],
+        bullets: [
+          'Uniforms: simple, repeatable placement that stays professional',
+          'Events: readable artwork with enough scale to work in photos',
+          'Workwear: clear identification without fighting seams, pockets or safety details',
+          'Promotional apparel: a stronger visual statement that supports the campaign'
+        ]
+      },
+      {
+        title: 'Left chest: the dependable professional choice',
+        paragraphs: [
+          'Left-chest decoration works well for company logos on polos, work shirts, jackets, hoodies and staff T-shirts. A width around 3 to 4 inches is a useful starting point, but narrow or tall logos may need different proportions.',
+          'Because the area is compact, simplify tiny lettering and fine details. Embroidery is especially effective here when the artwork can be digitized cleanly.'
+        ]
+      },
+      {
+        title: 'Centre chest: balanced and easy to see',
+        paragraphs: [
+          'A centre-chest mark sits below the collar and gives the artwork more room than a pocket-style placement. It stays visible under an open jacket or overshirt and works well for compact logos, team marks and short statements.',
+          'A practical starting range is roughly 6 to 10 inches wide, adjusted for the garment size and the shape of the artwork.'
+        ]
+      },
+      {
+        title: 'Full front and oversized front: use scale with purpose',
+        paragraphs: [
+          'A full-front print is useful when the artwork is the main feature. Many designs begin around 10 to 12 inches wide. Oversized prints can extend beyond that range, but small garments, youth sizes, zippers, pockets and side seams may limit the printable area.',
+          'Large solid areas can also feel heavier on the garment. DTF and screen-print artwork should be reviewed for ink coverage, breathability and how the design moves when worn.'
+        ],
+        image: {
+          src: '/images/blog/logo-placement-front-guide.webp',
+          alt: 'Front apparel views showing left chest, centre chest, full front and oversized print areas'
+        },
+        imageCaption: 'Front placements progress from subtle identification to a campaign-scale graphic. Final dimensions depend on the garment and artwork.'
+      },
+      {
+        title: 'Back placements: build visibility in layers',
+        paragraphs: [
+          'A small back-neck or yoke mark is a subtle brand detail, often around 2 to 3 inches wide. An upper-back placement gives short text or a team identifier more distance visibility. A full-back print gives detailed artwork, service information or event graphics the most room.',
+          'Back designs are often paired with a simpler left-chest mark. That combination keeps the front professional while turning the back into the stronger communication surface.'
+        ],
+        image: {
+          src: '/images/blog/logo-placement-back-sleeve-guide.webp',
+          alt: 'Apparel views showing back neck, upper back, full back and sleeve decoration areas'
+        },
+        imageCaption: 'Back and sleeve positions can add visibility without making the front of the garment feel crowded.'
+      },
+      {
+        title: 'Sleeve placement: small space, useful detail',
+        paragraphs: [
+          'Sleeves are useful for secondary marks, sponsor logos, flags, department names or a short web address. Around 2.5 to 4 inches wide is a common planning range, depending on sleeve length and garment size.',
+          'Keep sleeve artwork simple. Fine text and dense detail become difficult to read, and seams can reduce the usable area.'
+        ]
+      },
+      {
+        title: 'The decoration method changes the answer',
+        paragraphs: [
+          'Placement and production method should be chosen together. Embroidery adds texture and suits compact marks on polos, jackets and hats. DTF supports detailed, full-colour artwork and mixed garment orders. Screen printing is strong for bold repeat designs and larger quantities.',
+          'A logo prepared for a business card may need thicker lines, larger type or fewer details before it can be stitched or printed at apparel scale.'
+        ]
+      },
+      {
+        title: 'Confirm these details before approving the proof',
+        paragraphs: [
+          'A digital proof is the right time to confirm placement, scale and relationship to the garment—not after production starts.'
+        ],
+        bullets: [
+          'Garment style, colour and full size range',
+          'Exact logo version and brand colours',
+          'Decoration method for each placement',
+          'Approximate width and position from the collar, seam or pocket',
+          'Whether different garment sizes need adjusted artwork',
+          'A front, back and sleeve view whenever more than one location is used'
+        ]
+      }
+    ],
+    cta: {
+      heading: 'Plan the placement before production',
+      body: 'Send your logo, garment idea, quantity, size range and preferred locations. We will help turn them into a clear apparel proof.',
+      link: { label: 'Request an Apparel Quote', href: '/contact/?service=apparel#quote' }
+    }
+  },
   {
     slug: 'vehicle-graphics-marketing',
     path: '/blog/vehicle-graphics-marketing/',

@@ -57,6 +57,18 @@ function trackArticleCta(article: BlogArticle) {
         <ul v-if="section.bullets?.length">
           <li v-for="bullet in section.bullets" :key="bullet">{{ bullet }}</li>
         </ul>
+        <figure v-if="section.image" class="article-section__image">
+          <img
+            :src="section.image.src"
+            :alt="section.image.alt"
+            width="1536"
+            height="1024"
+            sizes="(width <= 860px) 100vw, 52rem"
+            loading="lazy"
+            decoding="async"
+          >
+          <figcaption v-if="section.imageCaption">{{ section.imageCaption }}</figcaption>
+        </figure>
       </section>
 
       <aside class="article-cta">
@@ -150,6 +162,31 @@ function trackArticleCta(article: BlogArticle) {
   gap: 0.35rem;
   margin: 0;
   padding-inline-start: 1.2rem;
+}
+
+.article-section__image {
+  display: grid;
+  gap: 0.65rem;
+  overflow: hidden;
+  margin: 0.65rem 0 0;
+}
+
+.article-section__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  border: 1px solid var(--color-line);
+  border-radius: 1.2rem;
+  background: var(--color-soft-grey);
+  object-fit: cover;
+}
+
+.article-section__image figcaption {
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  font-style: italic;
+  line-height: 1.55;
 }
 
 .article-cta {

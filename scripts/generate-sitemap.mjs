@@ -17,6 +17,7 @@ const routes = [
   { path: '/glass-finishes/' },
   { path: '/digital-marketing/' },
   { path: '/blog/' },
+  { path: '/blog/custom-apparel-logo-placement-guide/', lastmod: '2026-07-31' },
   { path: '/blog/vehicle-graphics-marketing/', lastmod: '2026-07-15' },
   { path: '/blog/local-seo-for-gta-businesses/', lastmod: '2026-07-15' },
   { path: '/blog/direct-mail-canada-post/', lastmod: '2026-07-15' },

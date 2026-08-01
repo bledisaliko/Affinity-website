@@ -15,6 +15,7 @@ const requiredRoutes = [
   '/glass-finishes/',
   '/digital-marketing/',
   '/blog/',
+  '/blog/custom-apparel-logo-placement-guide/',
   '/blog/vehicle-graphics-marketing/',
   '/blog/local-seo-for-gta-businesses/',
   '/blog/direct-mail-canada-post/',
@@ -60,14 +61,18 @@ const requiredImages = [
   'images/blog/vehicle-graphics-marketing.webp',
   'images/blog/local-seo-for-gta-businesses.webp',
   'images/blog/direct-mail-canada-post.webp',
-  'images/blog/embroidery-dtf-screen-printing.webp'
+  'images/blog/embroidery-dtf-screen-printing.webp',
+  'images/blog/apparel-logo-placement-guide.webp',
+  'images/blog/logo-placement-front-guide.webp',
+  'images/blog/logo-placement-back-sleeve-guide.webp'
 ]
 
 const requiredBlogFiles = [
   'content/blog/vehicle-graphics-marketing.md',
   'content/blog/local-seo-for-gta-businesses.md',
   'content/blog/direct-mail-canada-post.md',
-  'content/blog/embroidery-dtf-screen-printing.md'
+  'content/blog/embroidery-dtf-screen-printing.md',
+  'content/blog/custom-apparel-logo-placement-guide.md'
 ]
 
 const bannedPublicPhrases = [
@@ -158,7 +163,7 @@ function main() {
     const content = read(file)
     assert(/^---[\s\S]+?---/.test(content), `${file} is missing frontmatter.`)
     assert(/draft:\s*false/.test(content), `${file} must not be draft.`)
-    assert(/publishedAt:\s*"2026-07-15"/.test(content), `${file} has an invalid publishedAt date.`)
+    assert(/publishedAt:\s*"\d{4}-\d{2}-\d{2}"/.test(content), `${file} has an invalid publishedAt date.`)
     assertNoBracketTokens(content, file)
   }
 
