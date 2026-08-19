@@ -12,7 +12,7 @@ This file is a quick orientation map for future editing sessions.
 - Production domain: `https://affinitycreative.ca`
 - Contact email: `info@affinitycreative.ca`
 - Phone and WhatsApp: `+1 437-313-1510`
-- Instagram: `affinity__creative`
+- Instagram: `affinitycreative.ca`
 
 ## Non-Negotiable Rule
 
