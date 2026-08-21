@@ -43,6 +43,19 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-REF62SP9DJ');`,
           tagPriority: -100
+        },
+        {
+          type: 'text/javascript',
+          textContent: `var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6a892da232c63a3448b60f23/1k0jtkgft';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();`,
+          tagPosition: 'bodyClose'
         }
       ]
     }
