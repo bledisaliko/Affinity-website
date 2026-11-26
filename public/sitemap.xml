@@ -77,4 +77,8 @@
     <loc>https://affinitycreative.ca/terms/</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://affinitycreative.ca/workwear/</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>

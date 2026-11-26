@@ -23,6 +23,7 @@ const routes = [
   { path: '/blog/direct-mail-canada-post/', lastmod: '2026-07-15' },
   { path: '/blog/embroidery-dtf-screen-printing/', lastmod: '2026-07-15' },
   { path: '/contact/' },
+  { path: '/workwear/' },
   { path: '/privacy/' },
   { path: '/terms/' }
 ]

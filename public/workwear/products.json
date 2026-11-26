@@ -1,0 +1,64 @@
+{
+  "campaign": "workwear_winter_2026",
+  "whatsappNumber": "14373131510",
+  "whatsappMessage": "Hi Affinity Creative! I'm interested in custom workwear for my company. Could you provide more information and a quote?",
+  "colours": ["Not sure yet", "Black", "White", "Navy", "Orange", "Grey", "Other (tell us in the notes)"],
+  "products": [
+    {
+      "id": "polo",
+      "number": "01",
+      "name": "Embroidered Polo",
+      "brand": "Gildan",
+      "model": "64800 Softstyle Pique Polo",
+      "price": 19,
+      "unit": "each",
+      "description": "Professional polos with your company logo embroidered on the chest. Ideal for technicians, supervisors, sales teams and everyday business wear.",
+      "customization": ["Left chest embroidery", "Multiple colours and sizes"],
+      "image": "gildan-64800-polo",
+      "alt": "Black Gildan 64800 pique polo with an embroidered left-chest logo",
+      "button": "Get a Polo Quote"
+    },
+    {
+      "id": "hoodie",
+      "number": "02",
+      "name": "Custom Hoodie",
+      "brand": "Gildan",
+      "model": "18500 Heavy Blend Hooded Sweatshirt",
+      "price": 38,
+      "unit": "each",
+      "description": "Comfortable everyday hoodies for outdoor crews, contractors and cooler working conditions, customized with your company branding.",
+      "customization": ["Custom logo decoration", "Multiple colours and sizes"],
+      "image": "gildan-18500-hoodie",
+      "alt": "Orange Gildan 18500 Heavy Blend hoodie with an embroidered left-chest logo",
+      "button": "Get a Hoodie Quote"
+    },
+    {
+      "id": "tshirt",
+      "number": "03",
+      "name": "Printed T-Shirt",
+      "brand": "",
+      "model": "",
+      "price": 18,
+      "unit": "each",
+      "description": "Everyday crew T-shirts with your company logo printed on the front and back.",
+      "customization": ["Front and back DTF printing", "Multiple colours and sizes"],
+      "image": "custom-printed-tshirt",
+      "alt": "White crew-neck T-shirt with a printed company logo on the chest",
+      "button": "Get a T-Shirt Quote"
+    },
+    {
+      "id": "beanie",
+      "number": "04",
+      "name": "Embroidered Beanie",
+      "brand": "",
+      "model": "",
+      "price": 15,
+      "unit": "each",
+      "description": "Warm cuffed winter beanies with your company logo embroidered on the front.",
+      "customization": ["Front logo embroidery", "Multiple colour options"],
+      "image": "embroidered-beanie",
+      "alt": "Black cuffed knit beanie with an embroidered company logo",
+      "button": "Get a Beanie Quote"
+    }
+  ]
+}
