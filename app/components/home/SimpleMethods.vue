@@ -7,7 +7,6 @@ import { methodSections } from '../../utils/simpleHomepage'
     <div class="container">
       <div class="section-head section-head--dark" data-reveal>
         <h2 id="methods-title">Choose the right finish.</h2>
-        <p>We match the decoration method to the artwork, garment, quantity and intended use.</p>
       </div>
 
       <div class="methods-grid">

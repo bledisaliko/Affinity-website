@@ -346,3 +346,6 @@ html body .scroll-top { inset-block-end: calc(5.4rem + env(safe-area-inset-botto
 @media (max-width: 820px) {
   html body .footer-bottom { padding-block-end: calc(5.5rem + env(safe-area-inset-bottom, 0px)) !important; }
 }
+
+/* Homepage: no intro line under "Choose the right finish." */
+html body #methods .section-head p{display:none !important}

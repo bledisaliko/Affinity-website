@@ -30,11 +30,11 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/png', href: '/brand/affinity-favicon.png' },
         { rel: 'apple-touch-icon', href: '/brand/affinity-favicon.png' },
-        { rel: 'stylesheet', href: '/a26/affinity-2026.v1.css' }
+        { rel: 'stylesheet', href: '/a26/affinity-2026.v2.css' }
       ],
       script: [
         {
-          src: '/a26/affinity-2026.v1.js',
+          src: '/a26/affinity-2026.v2.js',
           defer: true,
           tagPosition: 'bodyClose'
         },

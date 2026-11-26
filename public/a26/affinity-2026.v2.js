@@ -70,7 +70,6 @@
       '<div class="container">' +
         '<div class="a26-reviews__head">' +
           '<h2 id="a26-reviews-title">What customers say.</h2>' +
-          '<p>Real reviews from Google.</p>' +
         '</div>' +
         '<div class="a26-reviews__widget"><div class="' + ELFSIGHT_APP + '" data-elfsight-app-lazy></div></div>' +
       '</div>';
