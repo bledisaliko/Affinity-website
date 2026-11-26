@@ -1,0 +1,127 @@
+#!/usr/bin/env python3
+"""Builds documentation/email/workwear-winter-2026.html (paste into Brevo > HTML editor).
+Usage: python3 documentation/email/build-email.py [base_url_for_images]"""
+import sys, pathlib
+BASE = (sys.argv[1] if len(sys.argv) > 1 else 'https://affinitycreative.ca').rstrip('/')
+LAND = 'https://affinitycreative.ca/workwear/?utm_source=brevo&amp;utm_medium=email&amp;utm_campaign=workwear_winter_2026'
+def link(content): return f'{LAND}&amp;utm_content={content}'
+WA = 'https://wa.me/14373131510?text=Hi%20Affinity%20Creative!%20I%27m%20interested%20in%20custom%20workwear%20for%20my%20company.%20Could%20you%20provide%20more%20information%20and%20a%20quote%3F'
+
+def product(img, name, price, alt, content):
+    return f'''<td class="stack" width="50%" valign="top" style="padding:6px;">
+          <a href="{link(content)}" target="_blank" style="text-decoration:none;color:#11110f;">
+            <img src="{BASE}/images/email/workwear-{img}-email.jpg" width="264" alt="{alt}" style="display:block;width:100%;max-width:264px;height:auto;border:0;border-radius:10px;">
+            <span style="display:block;font:700 15px/1.3 Arial,Helvetica,sans-serif;color:#11110f;padding:10px 2px 0;">{name}</span>
+            <span style="display:block;font:900 24px/1.2 Arial,Helvetica,sans-serif;color:#ff5a2f;padding:2px 2px 8px;">from ${price}</span>
+          </a>
+        </td>'''
+
+html = f'''<!DOCTYPE html>
+<html lang="en-CA" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="light only">
+<title>Custom workwear for your crew | Affinity Creative</title>
+<style>
+  body{{margin:0;padding:0;background:#ebe8e1;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}}
+  table{{border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;}}
+  img{{-ms-interpolation-mode:bicubic;}}
+  a{{color:#11110f;}}
+  @media only screen and (max-width:620px){{
+    .wrap{{width:100% !important;}}
+    .pad{{padding-left:20px !important;padding-right:20px !important;}}
+    .h1{{font-size:38px !important;line-height:1.05 !important;}}
+    .stack{{display:block !important;width:100% !important;max-width:100% !important;}}
+    .stack img{{max-width:100% !important;}}
+    .btn a{{display:block !important;}}
+  }}
+</style>
+</head>
+<body style="margin:0;padding:0;background:#ebe8e1;">
+<!-- Preheader (hidden preview text) -->
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:#ebe8e1;font-size:1px;line-height:1px;">Embroidered polos, hoodies, T-shirts and beanies with your logo. Starting prices inside.&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#ebe8e1;">
+<tr><td align="center" style="padding:20px 10px;">
+
+  <table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background:#f4f1ea;">
+
+    <!-- Logo -->
+    <tr><td class="pad" align="left" style="background:#ffffff;padding:18px 30px;">
+      <a href="https://affinitycreative.ca/" target="_blank"><img src="{BASE}/images/email/affinity-logo-email.jpg" width="190" alt="Affinity Creative" style="display:block;width:190px;height:auto;border:0;"></a>
+    </td></tr>
+
+    <!-- Hook -->
+    <tr><td class="pad" style="padding:34px 30px 8px;">
+      <p style="margin:0 0 14px;font:700 12px/1 Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#66635d;">Custom workwear &middot; Toronto &amp; GTA</p>
+      <h1 class="h1" style="margin:0;font:900 46px/1.04 Arial,Helvetica,sans-serif;letter-spacing:-1px;color:#11110f;">Your crew.<br>Your logo.<br><span style="color:#ff5a2f;">Polos from $19.</span></h1>
+    </td></tr>
+
+    <tr><td class="pad" style="padding:18px 30px 6px;">
+      <p style="margin:0 0 14px;font:400 17px/1.55 Arial,Helvetica,sans-serif;color:#24231f;">Hi {{{{ contact.FIRSTNAME | default: 'there' }}}},</p>
+      <p style="margin:0;font:400 17px/1.55 Arial,Helvetica,sans-serif;color:#24231f;">We're a local Toronto shop that embroiders and prints workwear for contractors, restoration companies, cleaners and other crews across the GTA. Send us your logo and we'll quote your whole team.</p>
+    </td></tr>
+
+    <!-- Primary button -->
+    <tr><td class="pad btn" style="padding:24px 30px 8px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td align="center" bgcolor="#ff5a2f" style="border-radius:999px;">
+          <a href="{link('hero_button')}" target="_blank" style="display:inline-block;padding:16px 30px;font:900 17px/1 Arial,Helvetica,sans-serif;color:#ffffff;text-decoration:none;border-radius:999px;background:#ff5a2f;">See prices &amp; get a quote &rarr;</a>
+        </td>
+      </tr></table>
+    </td></tr>
+
+    <!-- Hero photo -->
+    <tr><td class="pad" style="padding:22px 30px 0;">
+      <a href="{link('hero_image')}" target="_blank"><img src="{BASE}/images/email/workwear-hero-email.jpg" width="540" alt="Black polo, white T-shirt, orange hoodie and black beanie with an embroidered company logo" style="display:block;width:100%;max-width:540px;height:auto;border:0;border-radius:12px;"></a>
+      <p style="margin:6px 0 0;font:400 12px/1.4 Arial,Helvetica,sans-serif;color:#66635d;">Customization example.</p>
+    </td></tr>
+
+    <!-- Price strip -->
+    <tr><td class="pad" style="padding:30px 24px 0;">
+      <p style="margin:0 0 6px 6px;font:700 12px/1 Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#66635d;">Starting prices (CAD)</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+        {product('polo', 'Embroidered polo', 19, 'Black embroidered polo', 'product_polo')}
+        {product('hoodie', 'Custom hoodie', 38, 'Orange hoodie with embroidered logo', 'product_hoodie')}
+        </tr>
+        <tr>
+        {product('tshirt', 'Printed T-shirt', 18, 'White T-shirt with printed logo', 'product_tshirt')}
+        {product('beanie', 'Embroidered beanie', 15, 'Black beanie with embroidered logo', 'product_beanie')}
+        </tr>
+      </table>
+    </td></tr>
+
+    <!-- Contact -->
+    <tr><td class="pad" style="background:#11110f;padding:28px 30px;">
+      <p style="margin:0 0 6px;font:900 24px/1.2 Arial,Helvetica,sans-serif;color:#ffffff;">Let's outfit your crew.</p>
+      <p style="margin:0 0 14px;font:400 15px/1.55 Arial,Helvetica,sans-serif;color:#d8d5ce;">Tell us what you need, how many pieces and when. We'll come back with a quote.</p>
+      <p style="margin:0;font:700 15px/1.9 Arial,Helvetica,sans-serif;color:#ffffff;">
+        <a href="{WA}" target="_blank" style="color:#ffffff;">WhatsApp us</a> &nbsp;|&nbsp; <a href="tel:+14373131510" style="color:#ffffff;">437-313-1510</a><br>
+        <a href="mailto:info@affinitycreative.ca" style="color:#ffffff;">info@affinitycreative.ca</a>
+      </p>
+    </td></tr>
+
+    <!-- Fine print + CASL footer -->
+    <tr><td class="pad" style="padding:22px 30px 6px;">
+      <p style="margin:0;font:400 12px/1.5 Arial,Helvetica,sans-serif;color:#66635d;">Prices are starting prices in CAD, before taxes. Final pricing depends on garment, quantity, sizes and artwork. Any setup charges are confirmed before you order.</p>
+    </td></tr>
+    <tr><td class="pad" style="padding:10px 30px 28px;">
+      <p style="margin:0;font:400 12px/1.6 Arial,Helvetica,sans-serif;color:#66635d;">
+        Affinity Creative &middot; 376 Birchmount Rd, Scarborough, ON M1K 1M6<br>
+        You're receiving this because we think custom workwear could be useful for your business.<br>
+        <a href="{{{{ mirror }}}}" style="color:#66635d;">View in browser</a> &nbsp;|&nbsp; <a href="{{{{ unsubscribe }}}}" style="color:#66635d;">Unsubscribe</a>
+      </p>
+    </td></tr>
+
+  </table>
+</td></tr>
+</table>
+</body>
+</html>
+'''
+out = pathlib.Path(__file__).with_name('workwear-winter-2026.html' if len(sys.argv) < 2 else 'preview.html')
+out.write_text(html, encoding='utf-8'); print('wrote', out, len(html), 'bytes')
