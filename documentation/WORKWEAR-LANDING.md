@@ -9,7 +9,7 @@ Campaign link: https://affinitycreative.ca/workwear/?utm_source=brevo&utm_medium
 | Products, prices, descriptions, image names, WhatsApp text | `public/workwear/products.json` |
 | Page template (all other copy) | `scripts/workwear-template.html` |
 | Page builder (not the Nuxt generator) | `scripts/build-workwear.mjs` |
-| Styles / behaviour (versioned: bump v1 on any edit, files are cached 1 year) | `public/workwear/workwear.v1.css`, `workwear.v1.js` |
+| Styles / behaviour (versioned: bump the version in the filename on any edit, files are cached 1 year) | `public/workwear/workwear.v2.css`, `workwear.v1.js` (form and quote logic), `workwear-fx.v1.js` (motion), `fonts/archivo.woff2` |
 | Quote endpoint | `public/api/workwear-quote.php` |
 | Images (WebP) | `public/images/workwear/` ; original PNGs in `documentation/workwear-source-images/` |
 

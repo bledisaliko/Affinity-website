@@ -44,6 +44,15 @@ const cards = config.products.map((p) => {
         </article>`
 }).join('\n')
 
+const shortName = (p) => p.name.split(' ').pop()
+const pinPos = { polo: [36, 40], tshirt: [56, 52], hoodie: [81, 34], beanie: [40, 80] }
+const pins = config.products.map((p, i) => {
+  const [x, y] = pinPos[p.id] || [50, 50]
+  return `        <a class="pin" href="#products" data-pin="${esc(p.id)}" style="--x:${x}%;--y:${y}%;--i:${i}" aria-label="${esc(p.name)}, from $${p.price}. See details"><span class="pin__dot" aria-hidden="true"></span>${esc(shortName(p))} <b>$${p.price}</b></a>`
+}).join('\n')
+const bandItems = [...config.products.map((p) => `${shortName(p)}s from $${p.price}`), 'Embroidery', 'DTF printing', 'Bulk orders welcome', 'Toronto & GTA']
+const bandRow = [...bandItems, ...bandItems].map((s) => `<li>${esc(s)}</li>`).join('')
+
 const site = JSON.parse(readFileSync(join(root, 'content/site.json'), 'utf8'))
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -89,6 +98,8 @@ const productJson = JSON.stringify({
 const html = template
   .replaceAll('{{WA_ICON}}', WA_ICON)
   .replace('{{PRODUCT_CARDS}}', cards)
+  .replace('{{PINS}}', pins)
+  .replaceAll('{{BAND}}', bandRow)
   .replace('{{JSON_LD}}', jsonLd)
   .replace('{{PRODUCT_JSON}}', productJson)
 

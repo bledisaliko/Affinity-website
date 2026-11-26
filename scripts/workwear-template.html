@@ -21,13 +21,15 @@
 <link rel="icon" type="image/png" href="/brand/affinity-favicon.png">
 <link rel="apple-touch-icon" href="/brand/affinity-favicon.png">
 <link rel="preload" as="image" href="/images/workwear/workwear-hero-900.webp" imagesrcset="/images/workwear/workwear-hero-900.webp 900w, /images/workwear/workwear-hero-1600.webp 1600w" imagesizes="(min-width: 900px) 50vw, 100vw">
-<link rel="stylesheet" href="/workwear/workwear.v1.css">
+<link rel="preload" as="font" type="font/woff2" href="/workwear/fonts/archivo.woff2" crossorigin>
+<link rel="stylesheet" href="/workwear/workwear.v2.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-REF62SP9DJ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-REF62SP9DJ');</script>
 <script type="application/ld+json">{{JSON_LD}}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="header" id="top">
   <div class="wrap header__row">
@@ -46,8 +48,12 @@
   <section class="hero">
     <div class="wrap hero__grid">
       <div class="hero__copy">
-        <p class="label">Custom workwear · Toronto &amp; GTA</p>
-        <h1>Your crew.<br>Your logo.<br><span class="accent">Your workwear.</span></h1>
+        <p class="stitch-pill">Custom workwear &middot; Toronto &amp; GTA</p>
+        <h1>
+          <span class="ln" style="--i:0"><span>Your crew.</span></span>
+          <span class="ln" style="--i:1"><span>Your logo.</span></span>
+          <span class="ln" style="--i:2"><span class="accent">Your workwear.</span></span>
+        </h1>
         <p class="hero__lead">Custom embroidered polos, printed T-shirts, hoodies and beanies for contractors and businesses across Toronto and the GTA. Send us your logo and we'll help outfit your entire team.</p>
         <p class="hero__price">Custom embroidered polos from $19.</p>
         <div class="hero__actions">
@@ -60,30 +66,41 @@
           <li>Bulk orders welcome</li>
         </ul>
       </div>
-      <figure class="hero__media">
-        <img src="/images/workwear/workwear-hero-1600.webp" srcset="/images/workwear/workwear-hero-900.webp 900w, /images/workwear/workwear-hero-1600.webp 1600w" sizes="(min-width: 900px) 50vw, 100vw" width="1672" height="941" alt="Black polo, white T-shirt, orange hoodie and black beanie decorated with a company logo" fetchpriority="high">
-        <figcaption>Customization example</figcaption>
-      </figure>
+      <div class="stage" data-stage>
+        <figure class="stage__frame">
+          <img src="/images/workwear/workwear-hero-1600.webp" srcset="/images/workwear/workwear-hero-900.webp 900w, /images/workwear/workwear-hero-1600.webp 1600w" sizes="(min-width: 900px) 50vw, 100vw" width="1672" height="941" alt="Black polo, white T-shirt, orange hoodie and black beanie decorated with a company logo" fetchpriority="high">
+          <figcaption>Customization example</figcaption>
+        </figure>
+{{PINS}}
+      </div>
     </div>
   </section>
 
+  <div class="band-wrap" aria-label="Workwear at a glance">
+    <div class="band"><div class="band__track">
+      <ul class="band__row">{{BAND}}</ul>
+      <ul class="band__row" aria-hidden="true">{{BAND}}</ul>
+    </div></div>
+  </div>
+
   <section class="section" id="offers" aria-labelledby="offers-h">
     <div class="wrap">
-      <header class="section__head reveal">
+      <header class="section__head">
         <p class="label">The workwear collection</p>
         <h2 id="offers-h">Professional workwear.<br>Straightforward pricing.</h2>
         <p>Choose the clothing your crew needs and customize it with your company logo.</p>
       </header>
+      <p class="swipe-hint">Swipe to see all four</p>
       <div class="products" id="products">
 {{PRODUCT_CARDS}}
       </div>
-      <p class="pricing-note reveal">Prices are in CAD and exclude applicable taxes. Final pricing depends on garment selection, quantity, sizes and artwork requirements. Any applicable setup charges will be confirmed before ordering.</p>
+      <p class="pricing-note">Prices are in CAD and exclude applicable taxes. Final pricing depends on garment selection, quantity, sizes and artwork requirements. Any applicable setup charges will be confirmed before ordering.</p>
     </div>
   </section>
 
   <section class="section section--tint" id="how" aria-labelledby="how-h">
     <div class="wrap">
-      <header class="section__head reveal">
+      <header class="section__head">
         <h2 id="how-h">From your logo to your crew.</h2>
       </header>
       <ol class="steps">
@@ -111,17 +128,18 @@
 
   <section class="section" aria-labelledby="methods-h">
     <div class="wrap">
-      <header class="section__head reveal">
+      <header class="section__head">
         <p class="label">How we decorate</p>
         <h2 id="methods-h">Two ways to put your logo on it.</h2>
       </header>
       <div class="methods">
-        <article class="method reveal">
+        <article class="method method--emb">
+          <svg class="method__art" viewBox="0 0 420 220" preserveAspectRatio="xMaxYMin meet" aria-hidden="true" focusable="false"><path class="stitch" d="M14 70C80 8 140 128 214 66S338 14 406 78"/><path class="stitch" d="M14 118C80 56 140 176 214 114S338 62 406 126"/><path class="stitch stitch--thin" d="M14 166C80 104 140 224 214 162S338 110 406 174"/></svg>
           <h3>Professional embroidery</h3>
           <p>A stitched finish that works particularly well on polos, hoodies and beanies. Ideal for a professional, long-lasting branded appearance.</p>
           <p class="method__for">Best on: polos, hoodies, beanies</p>
         </article>
-        <article class="method reveal">
+        <article class="method method--dtf">
           <h3>DTF printing</h3>
           <p>Detailed, full-colour designs suitable for T-shirts and other compatible garments. Ideal for chest logos, large back prints and detailed artwork.</p>
           <p class="method__for">Best on: T-shirts and compatible garments</p>
@@ -200,6 +218,8 @@
   <p class="wrap footer__copy">© 2026 Affinity Creative. All rights reserved.</p>
 </footer>
 
+<a class="fab btn btn--primary" id="fab" href="#quote" data-quote-cta>Get a Quote</a>
+
 <nav class="mbar" id="mbar" aria-label="Quick contact">
   <a href="tel:+14373131510" data-track="phone_click" data-where="mobile_bar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>Call</a>
   <a class="mbar__wa" href="https://wa.me/14373131510" data-wa data-track="whatsapp_click" data-where="mobile_bar" target="_blank" rel="noopener noreferrer">{{WA_ICON}}WhatsApp</a>
@@ -208,5 +228,6 @@
 
 <script type="application/json" id="ww-data">{{PRODUCT_JSON}}</script>
 <script src="/workwear/workwear.v1.js" defer></script>
+<script src="/workwear/workwear-fx.v1.js" defer></script>
 </body>
 </html>
