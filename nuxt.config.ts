@@ -29,9 +29,15 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/brand/affinity-favicon.png' },
-        { rel: 'apple-touch-icon', href: '/brand/affinity-favicon.png' }
+        { rel: 'apple-touch-icon', href: '/brand/affinity-favicon.png' },
+        { rel: 'stylesheet', href: '/a26/affinity-2026.v1.css' }
       ],
       script: [
+        {
+          src: '/a26/affinity-2026.v1.js',
+          defer: true,
+          tagPosition: 'bodyClose'
+        },
         {
           async: true,
           src: 'https://www.googletagmanager.com/gtag/js?id=G-REF62SP9DJ',

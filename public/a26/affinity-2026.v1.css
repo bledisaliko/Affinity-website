@@ -1,0 +1,348 @@
+/* =====================================================================
+   Affinity Creative — 2026 refinement layer (v1)
+   Loaded on every page after the Nuxt CSS. Keeps the existing palette,
+   copy and imagery; removes template habits and adds proof + clarity.
+   Specificity is deliberately high (html body …) because the Nuxt
+   styles are scoped with data-v attributes.
+   ===================================================================== */
+
+:root {
+  --a26-ink: #11110f;
+  --a26-cream: #f4f1ea;
+  --a26-orange: #ff5a2f;
+  --a26-muted: #66635d;
+  --a26-line: rgba(17, 17, 15, .14);
+  --a26-wa: #25d366;
+}
+
+/* ---------------------------------------------------------------------
+   1. Small orange "eyebrow" labels above headings — removed.
+      (Breadcrumbs + the heading already say where you are.)
+      Blog posts keep their category, shown as quiet plain text.
+   --------------------------------------------------------------------- */
+html body .eyebrow,
+html body .footer-eyebrow,
+html body .service-quote__eyebrow {
+  display: none !important;
+}
+
+html body .article-hero__copy .eyebrow {
+  display: block !important;
+  margin: 0 0 .6rem;
+  color: var(--a26-muted) !important;
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+html body .article-hero__copy .eyebrow::before { display: none !important; }
+
+/* The 404 page keeps its code visible — it is information, not decoration. */
+html body .page-hero__inner .eyebrow { display: inline-flex !important; }
+
+/* ---------------------------------------------------------------------
+   2. "Why Affinity" block (floating pills) and duplicate taglines
+   --------------------------------------------------------------------- */
+html body .brand-statement { display: none !important; }
+
+/* Footer: the big statement repeated the homepage copy on every page.
+   Keep the call to action, drop the repeat. */
+html body .footer-statement__copy { display: none !important; }
+
+html body .footer-statement {
+  display: block !important;
+  padding-block: clamp(3rem, 5vw, 4rem) clamp(2rem, 3vw, 2.5rem) !important;
+}
+
+html body .footer-project {
+  display: grid !important;
+  max-width: none !important;
+  width: 100% !important;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-areas:
+    "title btn call"
+    "text  btn call";
+  column-gap: clamp(1rem, 3vw, 2rem);
+  row-gap: .3rem;
+  align-items: center;
+}
+html body .footer-project h3 { grid-area: title; margin: 0; }
+html body .footer-project p { grid-area: text; max-width: 38rem !important; margin: 0; }
+html body .footer-project__button { grid-area: btn; }
+html body .footer-project__call { grid-area: call; }
+
+@media (max-width: 820px) {
+  html body .footer-project {
+    grid-template-columns: 1fr;
+    grid-template-areas: "title" "text" "btn" "call";
+    row-gap: .85rem;
+  }
+}
+
+/* Footer base line: one line instead of three near-identical ones. */
+html body .footer-bottom { grid-template-columns: 1fr !important; }
+html body .footer-bottom p:nth-child(n + 2) { display: none !important; }
+html body .footer-bottom p:first-child { text-align: start !important; padding-inline-end: 5.5rem !important; }
+
+/* ---------------------------------------------------------------------
+   3. Orange stays exactly as it is (quote panel, numbers, icons, links).
+      Nothing in this file recolours it.
+   --------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------
+   4. "Choose the right finish" — a real comparison instead of three
+      numbered tiles. (Added by affinity-2026.js)
+   --------------------------------------------------------------------- */
+html body #methods .methods-grid { display: none !important; }
+
+.a26-sr {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.a26-compare { margin-top: clamp(1.5rem, 3vw, 2.25rem); color: #fff; }
+
+.a26-compare__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.a26-compare__table thead th,
+.a26-compare__table thead td { padding: 0 .75rem 1.1rem; vertical-align: bottom; text-align: left; }
+.a26-compare__table thead th:first-child,
+.a26-compare__table thead td:first-child { padding-inline-start: 0; }
+.a26-compare__table thead th:last-child { padding-inline-end: 0; }
+
+.a26-compare__col {
+  display: grid;
+  gap: .7rem;
+  color: #fff;
+  text-decoration: none;
+}
+.a26-compare__col img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 418 / 224;
+  object-fit: cover;
+  border-radius: .6rem;
+  background: rgba(255, 255, 255, .06);
+}
+.a26-compare__col span {
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -.01em;
+}
+.a26-compare__col:hover span,
+.a26-compare__col:focus-visible span { text-decoration: underline; text-underline-offset: .25em; }
+
+.a26-compare__table tbody tr { border-top: 1px solid rgba(255, 255, 255, .18); }
+.a26-compare__table tbody tr:last-child { border-bottom: 1px solid rgba(255, 255, 255, .18); }
+.a26-compare__table tbody th,
+.a26-compare__table tbody td {
+  padding: 1.1rem .75rem;
+  vertical-align: top;
+  text-align: left;
+  font-size: .98rem;
+  line-height: 1.5;
+}
+.a26-compare__table tbody th {
+  padding-inline-start: 0;
+  color: rgba(255, 255, 255, .62);
+  font-size: .86rem;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+.a26-compare__table tbody td { color: rgba(255, 255, 255, .92); }
+.a26-compare__table tbody td:last-child { padding-inline-end: 0; }
+
+.a26-compare__table col.a26-c0 { width: 11rem; }
+
+.a26-compare__ask {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+.a26-compare__ask p {
+  margin: 0;
+  max-width: 40rem;
+  color: rgba(255, 255, 255, .78);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+.a26-compare__ask p strong { color: #fff; }
+
+@media (max-width: 820px) {
+  .a26-compare__table,
+  .a26-compare__table tbody,
+  .a26-compare__table tbody tr { display: block; }
+  .a26-compare__table col { display: none; }
+
+  .a26-compare__table thead { display: block; }
+  .a26-compare__table thead tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+  .a26-compare__table thead td.a26-corner { display: none; }
+  .a26-compare__table thead th { padding: 0 0 1rem; }
+  .a26-compare__col span { font-size: .95rem; }
+
+  .a26-compare__table tbody tr { padding: 1.1rem 0; }
+  .a26-compare__table tbody th { display: block; padding: 0 0 .55rem; }
+  .a26-compare__table tbody td {
+    display: grid;
+    grid-template-columns: 6.2rem minmax(0, 1fr);
+    gap: .75rem;
+    padding: .4rem 0;
+    font-size: .95rem;
+  }
+  .a26-compare__table tbody td::before {
+    content: attr(data-label);
+    color: #fff;
+    font-weight: 900;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   5. Google reviews (proof) — Elfsight widget wrapper
+   --------------------------------------------------------------------- */
+.a26-reviews {
+  padding-block: clamp(2.75rem, 5.5vw, 4.25rem) clamp(1rem, 2vw, 1.5rem);
+  background: transparent;
+}
+.a26-reviews--page { border-top: 1px solid var(--a26-line); margin-top: clamp(1rem, 3vw, 2rem); }
+.a26-reviews__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: .5rem 2rem;
+  margin-bottom: clamp(1.1rem, 2.4vw, 1.75rem);
+}
+.a26-reviews__head h2 {
+  margin: 0;
+  color: var(--a26-ink);
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -.025em;
+}
+.a26-reviews__head p {
+  margin: 0;
+  max-width: 28rem;
+  color: var(--a26-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.a26-reviews__widget { min-height: 13rem; }
+
+/* On the homepage the reviews sit directly above the orange quote panel. */
+html body #contact.contact-section { padding-block-start: clamp(1.5rem, 3vw, 2.25rem) !important; }
+
+/* ---------------------------------------------------------------------
+   6. Quote form — three short steps (homepage + contact page)
+   --------------------------------------------------------------------- */
+.a26-progress { display: grid; gap: .65rem; margin-bottom: .35rem; }
+.a26-progress__bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: .35rem; }
+.a26-progress__bar span {
+  height: .28rem;
+  border-radius: 999px;
+  background: rgba(17, 17, 15, .14);
+  transition: background .25s ease;
+}
+.a26-progress__bar span.is-done { background: var(--a26-orange); }
+.a26-progress__label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+}
+.a26-progress__label strong { font-size: 1.05rem; font-weight: 900; color: var(--a26-ink); }
+.a26-progress__label span { color: var(--a26-muted); font-size: .84rem; font-weight: 800; }
+
+.a26-hint { grid-column: 1 / -1; margin: 0; color: var(--a26-muted); font-size: .92rem; line-height: 1.5; }
+
+/* show only the fields that belong to the current step */
+html body .quote-form[data-a26-step="1"] .form-field[data-a26-step]:not([data-a26-step="1"]),
+html body .quote-form[data-a26-step="2"] .form-field[data-a26-step]:not([data-a26-step="2"]),
+html body .quote-form[data-a26-step="3"] .form-field[data-a26-step]:not([data-a26-step="3"]),
+html body .quote-form[data-a26-step="1"] .a26-hint:not([data-a26-step="1"]),
+html body .quote-form[data-a26-step="2"] .a26-hint:not([data-a26-step="2"]),
+html body .quote-form[data-a26-step="3"] .a26-hint:not([data-a26-step="3"]) {
+  display: none !important;
+}
+
+html body .quote-form[data-a26-step="1"] .fine-print,
+html body .quote-form[data-a26-step="2"] .fine-print,
+html body .quote-form[data-a26-step="1"] .button-row,
+html body .quote-form[data-a26-step="2"] .button-row { display: none !important; }
+
+.a26-nav { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+.a26-nav .a26-back {
+  min-height: 3rem;
+  border: 1px solid rgba(17, 17, 15, .22);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--a26-ink);
+  padding: 0 1.25rem;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.a26-nav .a26-back:hover { border-color: var(--a26-ink); }
+.a26-nav .a26-next { cursor: pointer; }
+html body .quote-form[data-a26-step="1"] .a26-back { display: none; }
+html body .quote-form[data-a26-step="3"] .a26-next { display: none; }
+html body .quote-form[data-a26-step="3"] .a26-nav { margin-bottom: -.25rem; }
+
+/* ---------------------------------------------------------------------
+   7. WhatsApp — floating button, right side, every page
+   --------------------------------------------------------------------- */
+.a26-wa {
+  position: fixed;
+  inset-inline-end: 1.25rem;
+  inset-block-end: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  height: 3.5rem;
+  min-width: 3.5rem;
+  border-radius: 999px;
+  background: var(--a26-wa);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 .6rem 1.4rem rgba(17, 17, 15, .28), 0 0 0 1px rgba(255, 255, 255, .5) inset;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.a26-wa svg { flex: 0 0 auto; width: 1.9rem; height: 1.9rem; margin: .8rem; fill: currentColor; }
+.a26-wa__label {
+  max-width: 0;
+  opacity: 0;
+  white-space: nowrap;
+  font-weight: 900;
+  font-size: .95rem;
+  transition: max-width .3s ease, opacity .2s ease, margin .3s ease;
+}
+.a26-wa:hover, .a26-wa:focus-visible { transform: translateY(-2px); box-shadow: 0 .8rem 1.7rem rgba(17, 17, 15, .34); }
+.a26-wa:focus-visible { outline: 3px solid var(--a26-ink); outline-offset: 3px; }
+@media (hover: hover) and (min-width: 821px) {
+  .a26-wa:hover .a26-wa__label,
+  .a26-wa:focus-visible .a26-wa__label { max-width: 8rem; opacity: 1; margin-inline-end: 1.1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .a26-wa, .a26-wa__label { transition: none; }
+}
+@media print { .a26-wa { display: none !important; } }
+
+/* The scroll-to-top button now sits above WhatsApp instead of under it. */
+html body .scroll-top { inset-block-end: calc(5.4rem + env(safe-area-inset-bottom, 0px)) !important; }
+
+/* Keep the last footer line clear of the floating buttons on phones. */
+@media (max-width: 820px) {
+  html body .footer-bottom { padding-block-end: calc(5.5rem + env(safe-area-inset-bottom, 0px)) !important; }
+}
