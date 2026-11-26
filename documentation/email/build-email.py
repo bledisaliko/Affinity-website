@@ -70,7 +70,7 @@ html = f"""<!DOCTYPE html>
     <tr><td class="pad" style="padding:28px 32px 0;">
       <p style="margin:0 0 10px;font:700 12px/1 Arial,Helvetica,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#ff5a2f;">Winter workwear &middot; Toronto &amp; GTA</p>
       <h1 class="h1" style="margin:0 0 14px;font:900 42px/1.06 Arial,Helvetica,sans-serif;letter-spacing:-0.5px;color:#11110f;">Your crew.<span class="mbr" style="display:none;"><br></span> Your logo.<br><span style="color:#ff5a2f;">Polos from $19.</span></h1>
-      <p style="margin:0 0 6px;font:400 17px/1.5 Arial,Helvetica,sans-serif;color:#24231f;">Hi {{{{ contact.FIRSTNAME | default: 'there' }}}},</p>
+      <p style="margin:0 0 6px;font:400 17px/1.5 Arial,Helvetica,sans-serif;color:#24231f;">Hi {{{{ contact.FIRSTNAME|default:"there" }}}},</p>
       <p style="margin:0;font:400 17px/1.5 Arial,Helvetica,sans-serif;color:#24231f;">Custom polos, hoodies, T-shirts and beanies with your company logo, from a local GTA shop. Send us your logo and we'll quote the whole crew.</p>
     </td></tr>
     <tr><td class="pad" style="padding:22px 32px 0;">
