@@ -1,4 +1,4 @@
-/* Affinity Creative /workwear/ landing page, v2. Same brand tokens as the main site; new type, motion and depth. */
+/* Affinity Creative /workwear/ landing page, v3. Same brand tokens as the main site; new type, motion and depth. */
 @font-face{font-family:"Archivo";src:url(/workwear/fonts/archivo.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:swap}
 :root{
   --ink:#11110f;--charcoal:#24231f;--cream:#f4f1ea;--white:#fff;--soft:#dedbd4;--muted:#66635d;
@@ -143,21 +143,24 @@ ul,ol{margin:0;padding:0;list-style:none}
 .step h3{font-size:1.5rem;margin:.3rem 3rem .6rem 0}
 .step p:last-child{color:var(--charcoal);font-size:.97rem}
 
-/* Methods */
+/* Methods: black and white photo, colour revealed under the cursor */
+@property --r{syntax:"<length>";inherits:true;initial-value:0px}
 .methods{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
-.method{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;min-height:32rem;padding:clamp(1.6rem,3vw,2.6rem);border:2px solid var(--ink);border-radius:1.5rem;box-shadow:.4rem .5rem 0 var(--ink)}
-.method>*{position:relative;z-index:1}
+.method{position:relative;overflow:hidden;display:flex;flex-direction:column;border:2px solid var(--ink);border-radius:1.5rem;box-shadow:.4rem .5rem 0 var(--ink)}
 .method--emb{background:var(--orange);color:var(--ink)}
 .method--dtf{background:var(--white)}
+.method__media{position:relative;aspect-ratio:16/9;overflow:hidden;border-bottom:2px solid var(--ink);background:var(--ink);cursor:crosshair;--r:0px;transition:--r .45s var(--ease)}
+.method__media:hover{--r:8.5rem}
+.method__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.method__media>.method__img:not(.method__img--color){filter:grayscale(1) contrast(1.08) brightness(.92)}
+.method__img--color{-webkit-mask-image:radial-gradient(circle var(--r) at var(--mx,50%) var(--my,50%),#000 0,#000 62%,transparent 100%);mask-image:radial-gradient(circle var(--r) at var(--mx,50%) var(--my,50%),#000 0,#000 62%,transparent 100%)}
+.method__hint{position:absolute;left:.8rem;bottom:.8rem;padding:.3rem .75rem;border-radius:999px;background:rgba(255,255,255,.94);font-size:.76rem;font-weight:700;transition:opacity .25s;pointer-events:none}
+.method__media:hover .method__hint{opacity:0}
+.method__body{display:flex;flex-direction:column;flex:1;padding:clamp(1.4rem,2.6vw,2.2rem)}
 .method h3{font-size:clamp(1.8rem,2.8vw,2.5rem);margin-bottom:.8rem}
-.method p{max-width:28rem}
+.method p{max-width:30rem}
 .method__for{margin-top:1.2rem;align-self:flex-start;padding:.35rem .9rem;border:2px solid var(--ink);border-radius:999px;background:var(--cream);font-size:.85rem;font-weight:700}
-.method>.method__bg{position:absolute;z-index:0;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;filter:grayscale(1) contrast(1.05);transition:filter .6s var(--ease),transform .9s var(--ease)}
-.method:hover>.method__bg,.method:focus-within>.method__bg{filter:grayscale(0) contrast(1.05);transform:scale(1.05)}
-@media (hover:none){.method>.method__bg{filter:none}}
-.method::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none}
-.method--emb::after{background:linear-gradient(to bottom,var(--orange) 0,var(--orange) 46%,rgba(255,90,47,.7) 60%,rgba(255,90,47,0) 82%)}
-.method--dtf::after{background:linear-gradient(to bottom,#fff 0,#fff 46%,rgba(255,255,255,.75) 60%,rgba(255,255,255,0) 82%)}
+@media (hover:none){.method__media{cursor:auto}.method__media>.method__img:not(.method__img--color){display:none}.method__img--color{-webkit-mask-image:none;mask-image:none}.method__hint{display:none}}
 
 /* Contact */
 .contact{background:var(--orange);padding:var(--space) 0;color:var(--ink)}
@@ -245,7 +248,7 @@ ul,ol{margin:0;padding:0;list-style:none}
   .hero h1{font-size:clamp(2.2rem,9vw,3.6rem)}
   .stage{margin:.5rem 3% 0 0}
   .methods{grid-template-columns:1fr}
-  .method{min-height:30rem}
+  
   .fab{display:none}
   .steps{grid-template-columns:1fr;gap:1.1rem;padding-left:2.8rem}
   .steps::before,.steps::after{left:.85rem;right:auto;top:0;bottom:0;width:4px;height:auto}

@@ -70,6 +70,17 @@
     });
   }
 
+  /* Methods: colour spotlight follows the cursor over the photo */
+  if (finePointer) {
+    $$('[data-reveal]').forEach(function (box) {
+      box.addEventListener('pointermove', function (e) {
+        var b = box.getBoundingClientRect();
+        box.style.setProperty('--mx', (e.clientX - b.left) + 'px');
+        box.style.setProperty('--my', (e.clientY - b.top) + 'px');
+      });
+    });
+  }
+
   /* Desktop quote pill: visible once the hero is gone, hidden over the form */
   var fab = $('#fab'), hero = $('.hero'), quote = $('#quote');
   if (fab && hero && quote && 'IntersectionObserver' in window) {
